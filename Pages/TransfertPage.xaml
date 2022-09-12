@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="LOFI.Pages.TransfertPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:helpers="clr-namespace:LOFI.Helpers"
+    BackgroundColor="{DynamicResource Tertiary}">
+
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="90" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <StackLayout Grid.Row="0">
+                <Label
+                    FontFamily="PoppinsSemiBold"
+                    FontSize="16"
+                    HorizontalOptions="CenterAndExpand"
+                    Text="Envoyer de l'argent"
+                    TextColor="{DynamicResource White}"
+                    VerticalOptions="CenterAndExpand" />
+            </StackLayout>
+
+            <Frame
+                Grid.Row="1"
+                Margin="0,0,0,-40"
+                Padding="0"
+                BackgroundColor="{DynamicResource White}"
+                BorderColor="Transparent"
+                CornerRadius="40"
+                HasShadow="True">
+                <Frame.Shadow>
+                    <Shadow
+                        Brush="{DynamicResource Black}"
+                        Opacity="0.8"
+                        Radius="40"
+                        Offset="20,20" />
+                </Frame.Shadow>
+                <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                    <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                        <Label
+                            Margin="20"
+                            FontFamily="PoppinsSemiBold"
+                            FontSize="15"
+                            HorizontalOptions="CenterAndExpand"
+                            Text="Combien souhaitez-vous envoyer ?"
+                            TextColor="{DynamicResource Gray400}" />
+                        <BoxView
+                            Margin="0"
+                            HeightRequest="1"
+                            Color="{DynamicResource Gray100}" />
+                        <StackLayout
+                            Margin="0,20,0,0"
+                            HorizontalOptions="CenterAndExpand"
+                            Orientation="Horizontal">
+                            <Button
+                                x:Name="BtnMoins"
+                                Margin="0,0,30,0"
+                                Padding="0"
+                                BackgroundColor="{DynamicResource Gray100}"
+                                Clicked="BtnMoins_Clicked"
+                                CornerRadius="40"
+                                FontFamily="OpenSansSemiBold"
+                                FontSize="20"
+                                HeightRequest="40"
+                                Text="-"
+                                TextColor="{DynamicResource Gray500}"
+                                WidthRequest="40" />
+                            <Frame Padding="0" BorderColor="{DynamicResource Blue400Accent}">
+                                <StackLayout Orientation="Horizontal">
+                                    <Entry
+                                        x:Name="TxtMontant"
+                                        Margin="10,0,10,0"
+                                        FontFamily="PoppinsSemiBold"
+                                        FontSize="28"
+                                        HorizontalTextAlignment="Center"
+                                        Keyboard="Numeric"
+                                        Placeholder="Montant"
+                                        Text="{Binding Source={x:Reference slider}, Path=Value, StringFormat='{0:#,0}'}"
+                                        TextColor="{DynamicResource Secondary}" />
+                                    <Label
+                                        Margin="0,0,10,0"
+                                        FontFamily="PoppinsRegular"
+                                        FontSize="15"
+                                        Text="XAF"
+                                        TextColor="{DynamicResource Gray400}"
+                                        VerticalOptions="CenterAndExpand" />
+                                </StackLayout>
+                            </Frame>
+                            <Button
+                                x:Name="BtnPlus"
+                                Margin="30,0,0,0"
+                                Padding="0"
+                                BackgroundColor="{DynamicResource Gray100}"
+                                Clicked="BtnPlus_Clicked"
+                                CornerRadius="40"
+                                FontFamily="OpenSansSemiBold"
+                                FontSize="20"
+                                HeightRequest="40"
+                                Text="+"
+                                TextColor="{DynamicResource Gray500}"
+                                WidthRequest="40" />
+                        </StackLayout>
+                        <Slider
+                            x:Name="slider"
+                            Margin="10,0"
+                            Maximum="500000"
+                            Minimum="0"
+                            Value="{Binding Valeur}" />
+                        <StackLayout Padding="20" Orientation="Vertical">
+                            <Frame
+                                Padding="8"
+                                BackgroundColor="{DynamicResource Blue400Accent}"
+                                BorderColor="Transparent"
+                                CornerRadius="8"
+                                HasShadow="True"
+                                HorizontalOptions="Center">
+                                <Label TextColor="{DynamicResource Gray500}">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span FontFamily="OpenSansRegular" Text="Frais : " />
+                                            <Span FontFamily="OpenSansSemibold" Text="500 XAF" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                            </Frame>
+
+                            <Frame
+                                Margin="0,20,0,0"
+                                Padding="0"
+                                BorderColor="{DynamicResource Gray100}"
+                                HorizontalOptions="FillAndExpand">
+                                <StackLayout Orientation="Horizontal">
+                                    <Picker
+                                        x:Name="pickerPayer"
+                                        Title="Je paye par"
+                                        Margin="10,0"
+                                        FontFamily="PoppinsRegular"
+                                        HorizontalOptions="FillAndExpand">
+                                        <Picker.Items>
+                                            <x:String>Cash</x:String>
+                                            <x:String>MTN Mobile Money</x:String>
+                                            <x:String>Airtel Money</x:String>
+                                            <x:String>VISA</x:String>
+                                        </Picker.Items>
+                                    </Picker>
+                                    <Image Margin="0,0,10,0">
+                                        <Image.Source>
+                                            <FontImageSource
+                                                FontFamily="materialfont"
+                                                Glyph="{x:Static helpers:IconsClass.ChevronDown}"
+                                                Size="30"
+                                                Color="{DynamicResource Gray400}" />
+                                        </Image.Source>
+                                    </Image>
+                                </StackLayout>
+                            </Frame>
+                        </StackLayout>
+
+                        <StackLayout Margin="0,0,0,40" VerticalOptions="EndAndExpand">
+                            <Frame BackgroundColor="{DynamicResource Blue400Accent}" BorderColor="Transparent">
+                                <StackLayout>
+                                    <Label
+                                        Margin="20"
+                                        FontFamily="PoppinsSemiBold"
+                                        HorizontalOptions="CenterAndExpand"
+                                        Text="Choisir un(e) Bénéficiaire"
+                                        TextColor="{DynamicResource Gray400}" />
+                                    <StackLayout Orientation="Horizontal">
+                                        <Frame
+                                            Margin="0,0,10,0"
+                                            Padding="0"
+                                            BorderColor="{DynamicResource Gray100}"
+                                            CornerRadius="8"
+                                            HorizontalOptions="FillAndExpand">
+                                            <StackLayout Orientation="Horizontal">
+                                                <Picker
+                                                    x:Name="picker"
+                                                    Title="Choisir un(e) bénéficiaire"
+                                                    Margin="10,0"
+                                                    FontFamily="PoppinsRegular"
+                                                    HorizontalOptions="FillAndExpand">
+                                                    <Picker.Items>
+                                                        <x:String>TSIAZE KENFACK Zephirin</x:String>
+                                                        <x:String>DJANI Steve</x:String>
+                                                        <x:String>NANGMO Stephane</x:String>
+                                                    </Picker.Items>
+                                                </Picker>
+                                                <Image Margin="0,0,10,0">
+                                                    <Image.Source>
+                                                        <FontImageSource
+                                                            FontFamily="materialfont"
+                                                            Glyph="{x:Static helpers:IconsClass.ChevronDown}"
+                                                            Size="30"
+                                                            Color="{DynamicResource Gray400}" />
+                                                    </Image.Source>
+                                                </Image>
+                                            </StackLayout>
+                                        </Frame>
+                                        <Button
+                                            Padding="0"
+                                            BackgroundColor="{DynamicResource Green}"
+                                            CornerRadius="8"
+                                            FontFamily="OpenSansSemibold"
+                                            FontSize="20"
+                                            HeightRequest="40"
+                                            Text="+"
+                                            WidthRequest="40" />
+                                    </StackLayout>
+                                    <StackLayout Margin="0,20,0,20">
+                                        <Label
+                                            Margin="20"
+                                            FontFamily="PoppinsSemiBold"
+                                            HorizontalOptions="CenterAndExpand"
+                                            Text="Comment souhaitez-vous payer votre Bénéficiaire ?"
+                                            TextColor="{DynamicResource Gray400}" />
+
+                                        <CollectionView
+                                            HorizontalOptions="CenterAndExpand"
+                                            ItemsLayout="HorizontalList"
+                                            ItemsSource="{Binding Methodes}"
+                                            SelectedItem="{Binding SelectedMethode}"
+                                            SelectionMode="Single">
+                                            <CollectionView.ItemTemplate>
+                                                <DataTemplate>
+                                                    <Frame
+                                                        x:Name="Itemtarget"
+                                                        Margin="0,0,10,0"
+                                                        Padding="0"
+                                                        BackgroundColor="{DynamicResource Blue300Accent}"
+                                                        BorderColor="Transparent"
+                                                        CornerRadius="10">
+                                                        <Label
+                                                            Margin="10"
+                                                            FontFamily="OpenSansSemibold"
+                                                            Text="{Binding Titre}"
+                                                            TextColor="{DynamicResource Blue100Accent}" />
+                                                        <VisualStateManager.VisualStateGroups>
+                                                            <VisualStateGroup Name="CommonStates">
+                                                                <VisualState Name="Normal">
+                                                                    <VisualState.Setters>
+                                                                        <Setter Property="BackgroundColor" Value="{DynamicResource Key=Blue300Accent}" />
+                                                                    </VisualState.Setters>
+                                                                </VisualState>
+                                                                <VisualState Name="Selected">
+                                                                    <VisualState.Setters>
+                                                                        <Setter Property="BackgroundColor" Value="{DynamicResource Key=Blue400Accent}" />
+                                                                    </VisualState.Setters>
+                                                                </VisualState>
+                                                            </VisualStateGroup>
+                                                        </VisualStateManager.VisualStateGroups>
+                                                    </Frame>
+                                                </DataTemplate>
+                                            </CollectionView.ItemTemplate>
+                                        </CollectionView>
+                                    </StackLayout>
+                                    <StackLayout Orientation="Horizontal">
+                                        <Button
+                                            Padding="20"
+                                            BackgroundColor="{DynamicResource Gray100}"
+                                            CornerRadius="15"
+                                            FontFamily="PoppinsSemiBold"
+                                            Text="Annuler"
+                                            TextColor="{DynamicResource Gray500}"
+                                            WidthRequest="120" />
+                                        <Button
+                                            Padding="20"
+                                            BackgroundColor="{DynamicResource Tertiary}"
+                                            CornerRadius="15"
+                                            FontFamily="PoppinsSemiBold"
+                                            HorizontalOptions="EndAndExpand"
+                                            Text="Envoyer"
+                                            WidthRequest="120" />
+                                    </StackLayout>
+                                </StackLayout>
+                            </Frame>
+                        </StackLayout>
+                    </StackLayout>
+                </ScrollView>
+            </Frame>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

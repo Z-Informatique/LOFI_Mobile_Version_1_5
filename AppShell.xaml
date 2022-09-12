@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="LOFI.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:helpers="clr-namespace:LOFI.Helpers"
+    xmlns:local="clr-namespace:LOFI"
+    xmlns:pages="clr-namespace:LOFI.Pages"
+    Shell.FlyoutBehavior="Disabled"
+    Shell.NavBarIsVisible="False">
+
+    <TabBar>
+        <Tab Title="Accueil">
+            <Tab.Icon>
+                <FontImageSource
+                    FontFamily="materialfont"
+                    Glyph="{x:Static helpers:IconsClass.Home}"
+                    Size="24" />
+            </Tab.Icon>
+            <ShellContent
+                Title="Accueil"
+                ContentTemplate="{DataTemplate pages:HomePage}"
+                Route="HomePage" />
+        </Tab>
+        <Tab Title="Envoyer">
+            <Tab.Icon>
+                <FontImageSource
+                    FontFamily="materialfont"
+                    Glyph="{x:Static helpers:IconsClass.Send}"
+                    Size="24" />
+            </Tab.Icon>
+            <ShellContent
+                Title="Envoyer"
+                ContentTemplate="{DataTemplate pages:TransfertPage}"
+                Route="TransfertPage" />
+        </Tab>
+        <Tab Title="Historique">
+            <Tab.Icon>
+                <FontImageSource
+                    FontFamily="materialfont"
+                    Glyph="{x:Static helpers:IconsClass.SwapVertical}"
+                    Size="24" />
+            </Tab.Icon>
+            <ShellContent
+                Title="Historique"
+                ContentTemplate="{DataTemplate pages:HistoriquePage}"
+                Route="HistoriquePage" />
+        </Tab>
+        <Tab Title="Compte">
+            <Tab.Icon>
+                <FontImageSource
+                    FontFamily="materialfont"
+                    Glyph="{x:Static helpers:IconsClass.CreditCard}"
+                    Size="24" />
+            </Tab.Icon>
+            <ShellContent
+                Title="Compte"
+                ContentTemplate="{DataTemplate pages:BankPage}"
+                Route="BankPage" />
+        </Tab>
+    </TabBar>
+
+    <!--<ShellContent
+        Title="Home"
+        ContentTemplate="{DataTemplate local:MainPage}"
+        Route="MainPage" />-->
+
+</Shell>

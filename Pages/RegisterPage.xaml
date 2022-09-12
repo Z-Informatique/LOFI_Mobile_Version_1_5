@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="LOFI.Pages.RegisterPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    NavigationPage.HasNavigationBar="False">
+    <ContentPage.Content>
+
+        <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <Grid
+                BackgroundColor="{DynamicResource Secondary}"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="FillAndExpand">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <StackLayout
+                    Grid.Row="0"
+                    HeightRequest="100"
+                    HorizontalOptions="Center">
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="24"
+                        HorizontalOptions="CenterAndExpand"
+                        Text="DIRECT MONEY"
+                        TextColor="{DynamicResource White}"
+                        VerticalOptions="CenterAndExpand" />
+                </StackLayout>
+
+                <Frame
+                    Grid.Row="1"
+                    Margin="0,0,0,-60"
+                    BorderColor="Transparent"
+                    CornerRadius="20"
+                    HasShadow="True">
+                    <Grid
+                        Padding="20,20,20,60"
+                        HorizontalOptions="FillAndExpand"
+                        RowSpacing="15"
+                        VerticalOptions="FillAndExpand">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Label
+                            Grid.Row="0"
+                            Margin="0,0,0,0"
+                            FontSize="18"
+                            HorizontalOptions="CenterAndExpand"
+                            Text="Créer un compte"
+                            TextColor="{DynamicResource Secondary}" />
+                        <Frame
+                            Grid.Row="1"
+                            Padding="0"
+                            BorderColor="{DynamicResource Gray100}">
+                            <Picker
+                                x:Name="picker"
+                                Title="Choissisez votre catégorie"
+                                Margin="10,0">
+                                <Picker.Items>
+                                    <x:String>Individue</x:String>
+                                    <x:String>Entreprise</x:String>
+                                    <x:String>Association</x:String>
+                                </Picker.Items>
+                            </Picker>
+                        </Frame>
+                        <Frame
+                            Grid.Row="2"
+                            Padding="0"
+                            BorderColor="{DynamicResource Gray100}">
+                            <Picker
+                                x:Name="Country"
+                                Title="Sélectionner un pays"
+                                Margin="10,0">
+                                <Picker.Items>
+                                    <x:String>Cameroun</x:String>
+                                    <x:String>Congo Brazzaville</x:String>
+                                    <x:String>Gabon</x:String>
+                                </Picker.Items>
+                            </Picker>
+                        </Frame>
+                        <Frame
+                            Grid.Row="3"
+                            Padding="0"
+                            BorderColor="{DynamicResource Gray100}">
+                            <Entry
+                                Margin="10,0,0,0"
+                                Placeholder="Nom"
+                                Text="{Binding Nom}" />
+                        </Frame>
+                        <Frame
+                            Grid.Row="4"
+                            Padding="0"
+                            BorderColor="{DynamicResource Gray100}">
+                            <Entry
+                                Margin="10,0,0,0"
+                                Placeholder="Prénom"
+                                Text="{Binding Prenom}" />
+                        </Frame>
+                        <Frame
+                            Grid.Row="5"
+                            Padding="0"
+                            BorderColor="{DynamicResource Gray100}">
+                            <Entry
+                                Margin="10,0,0,0"
+                                Placeholder="Téléphone"
+                                Text="{Binding Telephone}" />
+                        </Frame>
+                        <Frame
+                            Grid.Row="6"
+                            Padding="0"
+                            BorderColor="{DynamicResource Gray100}">
+                            <Entry
+                                Grid.Row="6"
+                                Margin="10,0,0,0"
+                                Placeholder="Adresse Email"
+                                Text="{Binding Email}" />
+                        </Frame>
+                        <Frame
+                            Grid.Row="7"
+                            Padding="0"
+                            BorderColor="{DynamicResource Gray100}">
+                            <Entry
+                                Margin="10,0"
+                                IsPassword="True"
+                                Placeholder="Mot de passe"
+                                Text="{Binding Password}" />
+                        </Frame>
+                        <Frame
+                            Grid.Row="8"
+                            Padding="0"
+                            BorderColor="{DynamicResource Gray100}">
+                            <Entry
+                                Margin="10,0"
+                                IsPassword="True"
+                                Placeholder="Confirmer le mot de passe"
+                                Text="{Binding ConfirmPassword}" />
+                        </Frame>
+
+                        <StackLayout Grid.Row="9" Spacing="1">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <CheckBox
+                                    Grid.Row="0"
+                                    Grid.Column="0"
+                                    IsChecked="{Binding IsChecked}" />
+                                <Label
+                                    Grid.Row="0"
+                                    Grid.Column="1"
+                                    Margin="0,5,0,0"
+                                    Text="J'accepte les termes et conditions d'utilisation" />
+                            </Grid>
+                        </StackLayout>
+                        <Button
+                            Grid.Row="10"
+                            BackgroundColor="{DynamicResource Primary}"
+                            Command="{Binding RegisterCommand}"
+                            CornerRadius="20"
+                            FontAttributes="Bold"
+                            FontSize="18"
+                            Text="S'inscrire" />
+
+                        <Label
+                            Grid.Row="11"
+                            Margin="0,0,0,0"
+                            HorizontalOptions="CenterAndExpand"
+                            Text="Vous avez déjà un compte ? Se connecter"
+                            VerticalOptions="EndAndExpand">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding LoginCommandPage}" NumberOfTapsRequired="1" />
+                            </Label.GestureRecognizers>
+                        </Label>
+                    </Grid>
+                </Frame>
+            </Grid>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
