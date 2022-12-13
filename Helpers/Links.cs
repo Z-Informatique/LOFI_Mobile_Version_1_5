@@ -2,7 +2,8 @@
 {
     public class Links
     {
-        public const string BaseUrl = "http://192.168.100.14:89/api/";
+        public const string BaseUrl = "https://lobima.infraone-group.com/api/";
+        //public const string BaseUrl = "http://192.168.100.14:89/api/";
         public const string users = BaseUrl + "Users";
         public const string mouchars = BaseUrl + "Mouchars";
         public static string priceList = BaseUrl + "PriceLists";

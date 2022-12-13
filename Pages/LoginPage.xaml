@@ -6,121 +6,82 @@
     NavigationPage.HasNavigationBar="False">
     <ContentPage.Content>
         <Grid
-            BackgroundColor="{DynamicResource Secondary}"
             HorizontalOptions="FillAndExpand"
             VerticalOptions="FillAndExpand">
             <Grid.RowDefinitions>
-                <RowDefinition Height="*" />
+                <RowDefinition Height="250" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
-            <StackLayout Grid.Row="0" VerticalOptions="CenterAndExpand">
-                <Label
-                    FontSize="24"
-                    HorizontalOptions="CenterAndExpand"
-                    TextColor="{DynamicResource White}"
-                    VerticalOptions="CenterAndExpand">
-                    <Label.FormattedText>
-                        <FormattedString>
-                            <Span FontFamily="OpenSansSemibold" Text="DIRECT " />
-                            <Span FontFamily="OpenSansRegular" Text="MONEY" />
-                        </FormattedString>
-                    </Label.FormattedText>
-                </Label>
+            <StackLayout Grid.Row="0" VerticalOptions="Center">
+                <Label FontSize="28"
+                       HorizontalOptions="Center"
+                       TextColor="{DynamicResource Tertiary}"
+                       Text="MONEY TRANSFERT" />
                 <ActivityIndicator
-                    Margin="0,10,10,0"
-                    HeightRequest="20"
-                    HorizontalOptions="CenterAndExpand"
+                    HeightRequest="30"
                     IsRunning="{Binding IsBusy}"
                     IsVisible="{Binding IsBusy}"
-                    VerticalOptions="CenterAndExpand"
-                    WidthRequest="20"
-                    Color="{DynamicResource Primary}" />
+                    WidthRequest="30"
+                    Color="{DynamicResource Red}" />
             </StackLayout>
 
-            <Frame
-                Grid.Row="1"
-                BorderColor="Transparent"
-                CornerRadius="20"
-                HasShadow="True"
-                HeightRequest="400">
-                <Grid
-                    Padding="20,20,20,0"
-                    HorizontalOptions="FillAndExpand"
-                    RowSpacing="20"
-                    VerticalOptions="FillAndExpand">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                    </Grid.RowDefinitions>
-                    <Label
-                        Grid.Row="0"
-                        FontAttributes="Bold"
-                        FontSize="24"
-                        HorizontalOptions="CenterAndExpand"
-                        Text="Se connecter!"
-                        TextColor="{DynamicResource Secondary}" />
-                    <Label
-                        Grid.Row="1"
-                        Margin="0,-15,0,0"
-                        HorizontalOptions="CenterAndExpand"
-                        Text="Accéder à son compte"
-                        TextColor="{DynamicResource Secondary}" />
+            <Grid Grid.Row="1"
+                  Padding="20"
+                  RowSpacing="20">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Label Grid.Row="0"
+                       HorizontalOptions="Start"
+                       Text="Accéder à mon compte !"
+                       TextColor="{DynamicResource Secondary}" />
 
-                    <Frame
-                        Grid.Row="2"
-                        Padding="0"
-                        BorderColor="{DynamicResource Gray100}">
-                        <Entry
-                            Margin="10,0,0,0"
-                            ClearButtonVisibility="WhileEditing"
-                            Keyboard="Telephone"
-                            Placeholder="Téléphone"
-                            ReturnType="Next"
-                            Text="{Binding Telephone}" />
-                    </Frame>
-                    <Frame
-                        Grid.Row="3"
-                        Padding="0"
-                        BorderColor="{DynamicResource Gray100}">
-                        <Entry
-                            Margin="10,0,0,0"
-                            IsPassword="True"
-                            Placeholder="Mot de passe"
-                            ReturnCommand="{Binding LoginCommand}"
-                            ReturnType="Send"
-                            Text="{Binding Password}" />
-                    </Frame>
+                <Entry Grid.Row="1"
+                       ClearButtonVisibility="WhileEditing"
+                       Keyboard="Telephone"
+                       Placeholder="Téléphone"
+                       ReturnType="Next"
+                       Text="{Binding Telephone}" />
+                
+                <Entry Grid.Row="2"
+                       IsPassword="True"
+                       Placeholder="Mot de passe"
+                       ReturnCommand="{Binding LoginCommand}"
+                       ReturnCommandParameter="{Binding .}"
+                       ReturnType="Go"
+                       Text="{Binding Password}" />
 
-                    <Button
-                        Grid.Row="4"
-                        BackgroundColor="{DynamicResource Primary}"
+                <Button Grid.Row="3"
+                        BackgroundColor="{DynamicResource Secondary}"
                         Command="{Binding LoginCommand}"
-                        CornerRadius="10"
-                        FontAttributes="Bold"
-                        FontSize="18"
+                        HorizontalOptions="Center"
+                        TextTransform="Uppercase"
+                        FontFamily="Regular"
                         Text="Se connecter" />
-                    <Label
-                        Grid.Row="5"
-                        FontAttributes="Bold"
-                        HorizontalOptions="CenterAndExpand"
-                        Text="Mot de passe oublié" />
-                    <Label
-                        Grid.Row="6"
-                        Margin="0,0,0,0"
-                        HorizontalOptions="CenterAndExpand"
-                        Text="Vous êtes nouveau ? Inscrivez-vous ici"
-                        VerticalOptions="EndAndExpand">
+                
+                <Label Grid.Row="4"
+                       FontFamily="Bold"
+                       HorizontalOptions="EndAndExpand"
+                       Text="Mot de passe oublié" />
+
+                <StackLayout Grid.Row="5" Orientation="Horizontal"
+                             HorizontalOptions="CenterAndExpand"
+                             VerticalOptions="EndAndExpand">
+                    <Label Text="Je n'ai pas de compte ? "/>
+                    
+                    <Label Text=" S'inscrire" FontFamily="Bold">
                         <Label.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding RegisterCommandPage}" NumberOfTapsRequired="1" />
+                            <TapGestureRecognizer Command="{Binding RegisterCommandPage}"
+                                                  NumberOfTapsRequired="1" />
                         </Label.GestureRecognizers>
                     </Label>
-                </Grid>
-            </Frame>
+                </StackLayout>
+            </Grid>
         </Grid>
     </ContentPage.Content>
 </ContentPage>

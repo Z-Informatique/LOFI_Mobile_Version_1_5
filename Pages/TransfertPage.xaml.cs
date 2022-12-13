@@ -26,30 +26,30 @@ public partial class TransfertPage : ContentPage
 
 	private async void picContact_Clicked(object sender, EventArgs e)
 	{
-        try
-        {
-            var contact = await Contacts.Default.PickContactAsync();
+        //try
+        //{
+        //    var contact = await Contacts.Default.PickContactAsync();
 
-            if (contact == null)
-                return;
+        //    if (contact == null)
+        //        return;
 
-            string id = contact.Id;
-            string namePrefix = contact.NamePrefix;
-            string givenName = contact.GivenName;
-            string middleName = contact.MiddleName;
-            string familyName = contact.FamilyName;
-            string nameSuffix = contact.NameSuffix;
-            string displayName = contact.DisplayName;
-            List<ContactPhone> phones = contact.Phones; // List of phone numbers
-            List<ContactEmail> emails = contact.Emails; // List of email addresses
+        //    string id = contact.Id;
+        //    string namePrefix = contact.NamePrefix;
+        //    string givenName = contact.GivenName;
+        //    string middleName = contact.MiddleName;
+        //    string familyName = contact.FamilyName;
+        //    string nameSuffix = contact.NameSuffix;
+        //    string displayName = contact.DisplayName;
+        //    List<ContactPhone> phones = contact.Phones; // List of phone numbers
+        //    List<ContactEmail> emails = contact.Emails; // List of email addresses
 
-            await DisplayAlert("Contact", familyName + " " + middleName + ", " + phones.SingleOrDefault().PhoneNumber, "OK");
+        //    await DisplayAlert("Contact", familyName + " " + middleName + ", " + phones.SingleOrDefault().PhoneNumber, "OK");
 
-        }
-        catch (Exception ex)
-        {
-            //throw;
-        }
+        //}
+        //catch (Exception ex)
+        //{
+        //    //throw;
+        //}
         
     }
 }
