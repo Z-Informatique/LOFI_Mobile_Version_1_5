@@ -23,19 +23,18 @@
                     Grid.Column="0"
                     HorizontalOptions="FillAndExpand"
                     Orientation="Vertical">
-                    <Label CharacterSpacing="0.4" FontSize="30">
+                    <Label CharacterSpacing="0.4" FontSize="26">
                         <Label.FormattedText>
                             <FormattedString>
-                                <Span FontFamily="PoppinsRegular" Text="Salut, " />
-                                <Span FontFamily="PoppinsSemiBold" Text="{Binding Prenom}" />
+                                <Span FontFamily="Regular" Text="Salut, " />
+                                <Span FontFamily="Bold" Text="{Binding Prenom}" />
                             </FormattedString>
                         </Label.FormattedText>
                     </Label>
                     <Label
                         CharacterSpacing="0.8"
                         FontSize="12"
-                        Text="Votre portefeuille numérique"
-                        TextColor="{DynamicResource Gray400}" />
+                        Text="Votre portefeuille numérique" />
                 </StackLayout>
                 <Image
                     Grid.Row="0"
@@ -47,7 +46,7 @@
                     WidthRequest="60">
                     <Image.Shadow>
                         <Shadow
-                            Brush="{DynamicResource Black}"
+                            Brush="{DynamicResource Indigo}"
                             Opacity="0.4"
                             Radius="50"
                             Offset="20,20" />
@@ -57,12 +56,14 @@
                 <Grid
                     Grid.Row="1"
                     Grid.ColumnSpan="2"
-                    Margin="0,60,0,0">
+                    HorizontalOptions="CenterAndExpand"
+                    VerticalOptions="CenterAndExpand"
+                    RowSpacing="60">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
-                    <StackLayout Grid.Row="0" Margin="0,0,0,50">
+                    <StackLayout Grid.Row="0">
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="Auto" />
@@ -80,10 +81,9 @@
                                 Orientation="Horizontal">
                                 <Label
                                     FontFamily="PoppinsRegular"
-                                    FontSize="16"
+                                    FontSize="18"
                                     HorizontalOptions="CenterAndExpand"
-                                    Text="Que souhaitez-vous faire ?"
-                                    TextColor="{DynamicResource Gray400}" />
+                                    Text="Que souhaitez-vous faire ?" />
                             </StackLayout>
                             <Frame
                                 x:Name="FrmTransfert"
@@ -209,7 +209,7 @@
 
 
                     <StackLayout Grid.Row="1">
-                        <Grid>
+                        <Grid RowSpacing="20">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="Auto" />
                                 <RowDefinition Height="Auto" />
@@ -223,14 +223,12 @@
                             <StackLayout
                                 Grid.Row="0"
                                 Grid.ColumnSpan="3"
-                                Margin="0,0,0,20"
                                 Orientation="Horizontal">
                                 <Label
-                                    FontFamily="PoppinsRegular"
-                                    FontSize="16"
+                                    FontFamily="Regular"
+                                    FontSize="18"
                                     HorizontalOptions="CenterAndExpand"
-                                    Text="Offrez-vous un service"
-                                    TextColor="{DynamicResource Gray400}" />
+                                    Text="Offrez-vous un service" />
                             </StackLayout>
                             <Frame
                                 Grid.Row="1"
@@ -318,7 +316,7 @@
                             <Frame
                                 Grid.Row="2"
                                 Grid.Column="0"
-                                Margin="0,10,10,0"
+                                Margin="0,0,10,0"
                                 Padding="10"
                                 BackgroundColor="{DynamicResource White}"
                                 BorderColor="Transparent"
@@ -346,7 +344,7 @@
                             <Frame
                                 Grid.Row="2"
                                 Grid.Column="1"
-                                Margin="0,10,10,0"
+                                Margin="0,0,10,0"
                                 Padding="0"
                                 BackgroundColor="#ffca08"
                                 BorderColor="Transparent"
@@ -374,7 +372,6 @@
                             <Frame
                                 Grid.Row="2"
                                 Grid.Column="2"
-                                Margin="0,10,0,0"
                                 Padding="0"
                                 BackgroundColor="#ed1b24"
                                 BorderColor="Transparent"

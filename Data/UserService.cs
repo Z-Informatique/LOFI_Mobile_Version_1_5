@@ -30,15 +30,6 @@ namespace LOFI.Data
                 Settings.Nom = user.NomUser;
                 Settings.Prenom = user.PrenomUser;
                 Settings.UserRole = user.UserRole.ToString();
-
-                if (user.UserRole == 0)
-                {
-                    Compte compte = await CompteService.CompteAsync(Convert.ToInt32(Settings.IdUser));
-                    if (compte is not null)
-                    {
-                        Settings.Compte = serializeClass.Serialize(compte);
-                    }
-                }
             }
             return user;
         }
