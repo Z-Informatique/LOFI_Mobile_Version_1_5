@@ -45,6 +45,11 @@ namespace LOFI.Helpers
             get => AppSettings.GetValueOrDefault("Prenom", SettingsDefault);
             set => AppSettings.AddOrUpdateValue("Prenom", value);
         }
+        public static string Telephone
+        {
+            get => AppSettings.GetValueOrDefault("Telephone", SettingsDefault);
+            set => AppSettings.AddOrUpdateValue("Telephone", value);
+        }
         public static string UserRole
         {
             get => AppSettings.GetValueOrDefault("UserRole", SettingsDefault);

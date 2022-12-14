@@ -29,6 +29,7 @@ namespace LOFI.Data
                 Settings.IdUser = user.UserId.ToString();
                 Settings.Nom = user.NomUser;
                 Settings.Prenom = user.PrenomUser;
+                Settings.Telephone = user.TelUser;
                 Settings.UserRole = user.UserRole.ToString();
             }
             return user;

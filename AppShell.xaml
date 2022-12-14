@@ -7,8 +7,39 @@
     xmlns:local="clr-namespace:LOFI"
     xmlns:pages="clr-namespace:LOFI.Pages"
     Shell.FlyoutBehavior="Disabled"
-    Shell.NavBarIsVisible="False">
+    Shell.NavBarIsVisible="True">
+    <Shell.ToolbarItems>
+        
+        <ToolbarItem Order="Primary"
+                     Priority="0">
+            <ToolbarItem.IconImageSource>
+                <FontImageSource FontFamily="materialfont"
+                                 Glyph="{x:Static helpers:IconsClass.QrcodeScan}"
+                                 Size="20" />
+            </ToolbarItem.IconImageSource>
+        </ToolbarItem>
+        
+        <ToolbarItem Text="Paramètres"
+                     Priority="1"
+                     Order="Secondary"
+                     Command="{Binding NavigateToSettingsPageCommand}" />
 
+        <ToolbarItem Text="Profil"
+                     Priority="2"
+                     Order="Secondary"
+                     Command="{Binding NavigateToProfilePageCommand}" />
+
+        <ToolbarItem Text="Partager l'application"
+                     Priority="3"
+                     Order="Secondary"
+                     Command="{Binding NavigateToShareAppCommand}" />
+
+        <ToolbarItem Text="Déconnexion"
+                     Priority="4"
+                     Order="Secondary"
+                     Command="{Binding LogOutCommand}" />
+    </Shell.ToolbarItems>
+    
     <TabBar>
         <Tab Title="Accueil">
             <Tab.Icon>
@@ -17,12 +48,11 @@
                     Glyph="{x:Static helpers:IconsClass.HomeOutline}"
                     Size="24" />
             </Tab.Icon>
-            <ShellContent
-                Title="Accueil"
+            <ShellContent Title="MONEY TRANSFERT"
                 ContentTemplate="{DataTemplate pages:HomePage}"
                 Route="HomePage" />
         </Tab>
-        <Tab Title="Envoyer">
+        <!--<Tab Title="Envoyer">
             <Tab.Icon>
                 <FontImageSource
                     FontFamily="materialfont"
@@ -33,7 +63,7 @@
                 Title="Envoyer"
                 ContentTemplate="{DataTemplate pages:TransfertPage}"
                 Route="TransfertPage" />
-        </Tab>
+        </Tab>-->
         <Tab Title="Historique">
             <Tab.Icon>
                 <FontImageSource
@@ -42,7 +72,7 @@
                     Size="24" />
             </Tab.Icon>
             <ShellContent
-                Title="Historique"
+                Title="HISTORIQUE"
                 ContentTemplate="{DataTemplate pages:HistoriquePage}"
                 Route="HistoriquePage" />
         </Tab>
@@ -50,11 +80,11 @@
             <Tab.Icon>
                 <FontImageSource
                     FontFamily="materialfont"
-                    Glyph="{x:Static helpers:IconsClass.CreditCardOutline}"
+                    Glyph="{x:Static helpers:IconsClass.AccountSupervisorOutline}"
                     Size="24" />
             </Tab.Icon>
             <ShellContent
-                Title="Compte"
+                Title="COMPTE"
                 ContentTemplate="{DataTemplate pages:BankPage}"
                 Route="BankPage" />
         </Tab>

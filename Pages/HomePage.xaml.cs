@@ -4,11 +4,9 @@ namespace LOFI.Pages;
 
 public partial class HomePage : ContentPage
 {
-	private HomeViewModel homeViewModel;
-	public HomePage()
+	public HomePage(HomeViewModel homeViewModel)
 	{
 		InitializeComponent();
-		homeViewModel = new HomeViewModel();
 		BindingContext = homeViewModel;
 	}
 

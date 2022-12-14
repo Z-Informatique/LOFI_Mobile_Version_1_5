@@ -6,23 +6,11 @@ namespace LOFI.Pages;
 
 public partial class TransfertPage : ContentPage
 {
-	private readonly TransfertViewModel transfertViewModel;
-	public TransfertPage()
+	public TransfertPage(TransfertViewModel transfertViewModel)
 	{
 		InitializeComponent();
-		transfertViewModel = new TransfertViewModel();
         BindingContext = transfertViewModel;
 	}
-
-	private void BtnMoins_Clicked(object sender, EventArgs e)
-	{
-		slider.Value -= 1;
-    }
-
-	private void BtnPlus_Clicked(object sender, EventArgs e)
-    {
-        slider.Value += 1;
-    }
 
 	private async void picContact_Clicked(object sender, EventArgs e)
 	{

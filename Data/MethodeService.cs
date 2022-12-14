@@ -1,26 +1,26 @@
 ﻿using LOFI.Helpers;
 using LOFI.Models;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace LOFI.Data
+namespace LOFI.Data;
+
+public class MethodeService
 {
-    public class MethodeService
+    private readonly DataRestFull<Methode> dataRestFull;
+    private readonly DataRestFull<Operateur> restOperateur;
+    private readonly string url = Links.Methodes;
+    private readonly string urlOperateur = Links.Operateurs;
+    public MethodeService()
     {
-        private readonly DataRestFull<Methode> dataRestFull;
-        private readonly string url = Links.Methodes;
-        public MethodeService()
-        {
-            dataRestFull = new DataRestFull<Methode>(url);
-        }
-
-        public async Task<ObservableCollection<Methode>> getAllMethodes()
-        {
-            return await dataRestFull.GetAsyncObservable();
-        }
+        dataRestFull = new DataRestFull<Methode>(url);
+        restOperateur = new DataRestFull<Operateur>(urlOperateur);
     }
+
+    public async Task<ObservableCollection<Methode>> getAllMethodes()
+    {
+        return await dataRestFull.GetAsyncObservable();
+    }
+
+    public async Task<ObservableCollection<Operateur>> getAllOperateur() => await restOperateur.GetAsyncObservable();
+
 }

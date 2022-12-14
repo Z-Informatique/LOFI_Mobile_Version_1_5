@@ -1,4 +1,6 @@
 ﻿using CommunityToolkit.Maui;
+using LOFI.Pages;
+using LOFI.ViewModels;
 
 namespace LOFI;
 public static class MauiProgram
@@ -15,6 +17,15 @@ public static class MauiProgram
             fonts.AddFont("PoppinsRegular.ttf", "Regular");
             fonts.AddFont("PoppinsSemiBold.ttf", "Bold");
         }).UseMauiCommunityToolkit();
+
+
+        builder.Services.AddSingleton<TransfertPage>();
+        builder.Services.AddSingleton<TransfertViewModel>();
+        
+        builder.Services.AddSingleton<HomePage>();
+        builder.Services.AddSingleton<HomeViewModel>();
+
+
         return builder.Build();
     }
 }

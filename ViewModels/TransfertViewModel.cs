@@ -1,98 +1,86 @@
-﻿using LOFI.Data;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using LOFI.Data;
 using LOFI.Models;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Input;
 
-namespace LOFI.ViewModels
+namespace LOFI.ViewModels;
+
+public partial class TransfertViewModel : ObservableObject
 {
-    public class TransfertViewModel : BaseViewModel
+    public MethodeService methodeService { get; set; } = new MethodeService();
+
+    [ObservableProperty]
+    int montant;
+    
+    [ObservableProperty]
+    string titre;
+    
+    [ObservableProperty]
+    int frais;
+
+    [ObservableProperty]
+    bool isBusy;
+
+    [ObservableProperty]
+    Methode selectedMethode;
+
+    [ObservableProperty]
+    Operateur selectedOperateur;
+
+    [ObservableProperty]
+    ObservableCollection<Methode> methodes;
+
+    [ObservableProperty]
+    ObservableCollection<Operateur> operateurs;
+
+    public TransfertViewModel()
     {
-        double _valeur;
-        public double Valeur { get { return _valeur; } set { _valeur=value; OnPropertyChanged(); } }
-        bool _IsBusy;
-        public bool IsBusy
-        {
-            get => _IsBusy;
-            set
-            {
-                if (_IsBusy != value)
-                {
-                    _IsBusy = value;
-                    OnPropertyChanged();
-                }
-            }
-        }
-        const int RefreshDuration = 2;
-        bool isRefreshing;
-        public bool IsRefreshing
-        {
-            get
-            {
-                return isRefreshing;
-            }
-            set
-            {
-                isRefreshing = value;
-                OnPropertyChanged();
-            }
-        }
-        Methode selectedMethode;
-        public Methode SelectedMethode
-        {
-            get
-            {
-                return selectedMethode;
-            }
-            set
-            {
-                if (selectedMethode != value)
-                {
-                    selectedMethode = value;
-                    OnPropertyChanged();
-                }
-            }
-        }
-        public ICommand RefreshCommand => new Command(async () => await RefreshDataAsync());
+        Methodes = new ObservableCollection<Methode>();
+        Operateurs = new ObservableCollection<Operateur>();
 
-        private async Task RefreshDataAsync()
-        {
-            IsRefreshing = true;
-            getAllMethodes();
-
-            await Task.Delay(TimeSpan.FromSeconds(RefreshDuration));
-            IsRefreshing = false;
-        }
-        public MethodeService methodeService { get; set; } = new MethodeService();
-        private ObservableCollection<Methode> methode = new ObservableCollection<Methode>();
-        public ObservableCollection<Methode> Methodes { get => methode; set { methode = value; OnPropertyChanged(); } }
-
-        public TransfertViewModel()
-        {
-            getAllMethodes();
-        }
-
-        async void getAllMethodes()
-        {
-            try
-            {
-                if (IsBusy)
-                    return;
-
-                IsBusy = true;
-                Methodes = await methodeService.getAllMethodes();
-                IsBusy = false;
-            }
-            catch (Exception)
-            {
-                await Application.Current.MainPage.DisplayAlert("Alerte !", "Erreur de chargement des données. Vérifiez votre connexion internet.", "Ok");
-                IsBusy = false;
-            }
-        }
-
+        getAllMethodes();
+        getOperateur();
     }
+
+    async void getAllMethodes()
+    {
+        try
+        {
+            if (IsBusy)
+                return;
+
+            IsBusy = true;
+            Methodes = await methodeService.getAllMethodes();
+        }
+        catch (Exception ex)
+        {
+            await Shell.Current.DisplayAlert("Alerte !", "Erreur de chargement des données. " + ex.Message, "OK");
+        }
+        finally
+        {
+            IsBusy = false;
+        }
+    }
+
+    async void getOperateur()
+    {
+        try
+        {
+            if (IsBusy)
+                return;
+
+            IsBusy = true;
+            Operateurs = await methodeService.getAllOperateur();
+        }
+        catch (Exception ex)
+        {
+            await Shell.Current.DisplayAlert("Alerte !", "Erreur de chargement des données. " + ex.Message, "OK");
+        }
+        finally
+        {
+            IsBusy = false;
+        }
+    }
+
+
 }
