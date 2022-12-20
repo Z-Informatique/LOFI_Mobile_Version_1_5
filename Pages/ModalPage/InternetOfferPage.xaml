@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<mct:Popup xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+           xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+           x:Class="LOFI.Pages.ModalPage.InternetOfferPage"
+           xmlns:mct="clr-namespace:CommunityToolkit.Maui.Views;assembly=CommunityToolkit.Maui"
+           CanBeDismissedByTappingOutsideOfPopup="False">
+
+    <StackLayout BackgroundColor="{DynamicResource White}"
+                 Padding="20"
+                 Spacing="20"
+                 WidthRequest="300">
+        <Label Text="Offre internet"
+               FontSize="16"
+               FontFamily="Regular" />
+
+        <Picker x:Name="picker"
+                Title="Choisir le fournisseur">
+            <Picker.ItemsSource>
+                <x:Array Type="{x:Type x:String}">
+                    <x:String>CANALBOX</x:String>
+                    <x:String>CONGO TELECOM</x:String>
+                </x:Array>
+            </Picker.ItemsSource>
+        </Picker>
+        <Picker x:Name="pickerB"
+                Title="Choisir l'offre">
+            <Picker.ItemsSource>
+                <x:Array Type="{x:Type x:String}">
+                    <x:String>ACCESS</x:String>
+                    <x:String>PREMIUM</x:String>
+                </x:Array>
+            </Picker.ItemsSource>
+        </Picker>
+        <Entry Placeholder="Numéro d'abonnement"
+               Keyboard="Numeric"
+               MaxLength="14" />
+
+        <StackLayout Orientation="Horizontal"
+                     HorizontalOptions="EndAndExpand"
+                     VerticalOptions="EndAndExpand">
+            <Button x:Name="btnClose"
+                    Clicked="btnClose_Clicked"
+                    Text="FERMER"
+                    FontFamily="Regular"
+                    BackgroundColor="Transparent"
+                    TextColor="{DynamicResource Indigo}" />
+            <Button x:Name="btnValider"
+                    Text="VALIDER"
+                    FontFamily="Regular"
+                    BackgroundColor="Transparent"
+                    TextColor="{DynamicResource Tertiary}" />
+        </StackLayout>
+    </StackLayout>
+</mct:Popup>

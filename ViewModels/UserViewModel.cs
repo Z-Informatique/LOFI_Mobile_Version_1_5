@@ -39,28 +39,38 @@ public partial class UserViewModel : ObservableObject
     [RelayCommand]
     private async Task Login()
     {
-        if (string.IsNullOrEmpty(Telephone))
+        try
         {
-            await Application.Current.MainPage.DisplayAlert("Alerte !", "Le champ téléphone est vide.", "OK");
-            return;
-        }
-        if (string.IsNullOrEmpty(Password))
-        {
-            await Application.Current.MainPage.DisplayAlert("Alerte !", "Le champ mot de passe est vide.", "OK");
-            return;
-        }
-        IsBusy = true;
-        User user = await userService.Login(Telephone, Password);
+            if (string.IsNullOrEmpty(Telephone))
+            {
+                await Application.Current.MainPage.DisplayAlert("Alerte !", "Le champ téléphone est vide.", "OK");
+                return;
+            }
+            if (string.IsNullOrEmpty(Password))
+            {
+                await Application.Current.MainPage.DisplayAlert("Alerte !", "Le champ mot de passe est vide.", "OK");
+                return;
+            }
+            IsBusy = true;
+            User user = await userService.Login(Telephone, Password);
 
-        if (user != null && !string.IsNullOrEmpty(user.TelUser))
-        {
-            Application.Current.MainPage = new AppShell();
+            if (user != null && !string.IsNullOrEmpty(user.TelUser))
+            {
+                Application.Current.MainPage = new AppShell();
+            }
+            else
+            {
+                await Application.Current.MainPage.DisplayAlert("Alerte !", "Téléphone ou mot de passe incorrect.", "OK");
+            }
         }
-        else
+        catch (Exception ex)
         {
-            await Application.Current.MainPage.DisplayAlert("Alerte !", "Téléphone ou mot de passe incorrect.", "OK");
+            await Application.Current.MainPage.DisplayAlert("Alerte !", $"Impossible de contacter le serveur. {ex.Message}", "OK");
         }
-        IsBusy = false;
+        finally
+        {
+            IsBusy = false;
+        }
     }
 
     private async Task RegisterCommandAsync()

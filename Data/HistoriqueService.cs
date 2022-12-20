@@ -14,7 +14,7 @@ namespace LOFI.Data
         private readonly DataRestFull<Historique> dataRestFull;
         private readonly string url = Links.historiques;
         private readonly SerializeClass<Compte> serializeClass = new SerializeClass<Compte>();
-        public Compte Compte = new Compte();
+        private Compte Compte = new Compte();
         public HistoriqueService()
         {
             dataRestFull = new DataRestFull<Historique>(url);

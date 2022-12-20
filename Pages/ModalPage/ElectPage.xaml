@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<mct:Popup xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LOFI.Pages.ModalPage.ElectPage"
+             xmlns:mct="clr-namespace:CommunityToolkit.Maui.Views;assembly=CommunityToolkit.Maui"
+             CanBeDismissedByTappingOutsideOfPopup="False">
+
+
+    <StackLayout BackgroundColor="{DynamicResource White}"
+                 Padding="20"
+                 Spacing="20"
+                 WidthRequest="300">
+        <Label Text="Payer ma facture d'électricité"
+               FontSize="16"
+               FontFamily="Regular" />
+
+        <Entry Placeholder="Numéro d'abonné"
+               Keyboard="Numeric"
+               MaxLength="14" />
+
+        <StackLayout Orientation="Horizontal"
+                     HorizontalOptions="EndAndExpand"
+                     VerticalOptions="EndAndExpand">
+            <Button x:Name="btnClose"
+                    Clicked="btnClose_Clicked"
+                    Text="FERMER"
+                    FontFamily="Regular"
+                    BackgroundColor="Transparent"
+                    TextColor="{DynamicResource Indigo}" />
+            <Button x:Name="btnValider"
+                    Text="VALIDER"
+                    FontFamily="Regular"
+                    BackgroundColor="Transparent"
+                    TextColor="{DynamicResource Primary}" />
+        </StackLayout>
+    </StackLayout>
+
+</mct:Popup>

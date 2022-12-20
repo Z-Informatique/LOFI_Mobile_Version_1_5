@@ -4,12 +4,10 @@ namespace LOFI.Pages;
 
 public partial class HistoriquePage : ContentPage
 {
-	private readonly HistoriqueViewModel historiqueViewModel;
-	public HistoriquePage()
+    public HistoriquePage(HistoriqueViewModel historiqueViewModel)
 	{
 		InitializeComponent();
-		historiqueViewModel = new HistoriqueViewModel();
-		BindingContext = historiqueViewModel;
+        BindingContext = historiqueViewModel;
 
     }
 }

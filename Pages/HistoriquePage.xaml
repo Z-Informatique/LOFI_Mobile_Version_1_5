@@ -3,52 +3,41 @@
     x:Class="LOFI.Pages.HistoriquePage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    BackgroundColor="{DynamicResource Blue400Accent}">
+             xmlns:helpers="clr-namespace:LOFI.Helpers"
+             xmlns:model="clr-namespace:LOFI.Models"
+             xmlns:local="clr-namespace:LOFI.ViewModels"
+             x:DataType="local:HistoriqueViewModel"
+             BackgroundColor="{DynamicResource Blue400Accent}"
+    Title="HISTORIQUE">
+    
     <ContentPage.Content>
         <RefreshView Command="{Binding RefreshCommand}" IsRefreshing="{Binding IsRefreshing}">
-            <Grid Margin="0,20,0,0" Padding="20">
+            <Grid Padding="20">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
 
-                <StackLayout Grid.Row="0">
-                    <ActivityIndicator
-                        HeightRequest="20"
-                        IsRunning="{Binding IsBusy}"
-                        IsVisible="{Binding IsBusy}"
-                        VerticalOptions="Center"
-                        WidthRequest="20"
-                        Color="{DynamicResource Primary}" />
-                    <Label
-                        CharacterSpacing="0.4"
-                        FontFamily="PoppinsSemiBold"
-                        FontSize="30">
-                        <Label.FormattedText>
-                            <FormattedString>
-                                <Span Text="Historique" />
-                            </FormattedString>
-                        </Label.FormattedText>
-                    </Label>
-                    <Label
-                        CharacterSpacing="1.5"
-                        FontSize="12"
-                        Text="Toutes vos opérations"
-                        TextColor="{DynamicResource Gray400}" />
-                </StackLayout>
+                <ActivityIndicator HeightRequest="20"
+                                   Grid.Row="0"
+                                   IsRunning="{Binding IsBusy}"
+                                   IsVisible="{Binding IsBusy}"
+                                   VerticalOptions="Center"
+                                   WidthRequest="20"
+                                   Color="{DynamicResource Primary}" />
                 <ScrollView
                     Grid.Row="1"
                     HorizontalOptions="FillAndExpand"
                     VerticalOptions="FillAndExpand">
-                    <StackLayout BindableLayout.ItemsSource="{Binding Historiques}">
+                    
+                    <StackLayout BindableLayout.ItemsSource="{Binding Historiques}" Spacing="10">
                         <BindableLayout.ItemTemplate>
-                            <DataTemplate>
+                            <DataTemplate x:DataType="model:Historique">
                                 <Frame
-                                    Margin="0,10,0,0"
                                     Padding="15"
                                     BackgroundColor="{DynamicResource White}"
                                     BorderColor="Transparent"
-                                    CornerRadius="0"
+                                    CornerRadius="10"
                                     HasShadow="True">
                                     <Frame.Shadow>
                                         <Shadow
@@ -63,61 +52,48 @@
                                             <RowDefinition Height="Auto" />
                                             <RowDefinition Height="Auto" />
                                         </Grid.RowDefinitions>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="*" />
-                                            <ColumnDefinition Width="*" />
-                                            <ColumnDefinition Width="Auto" />
-                                        </Grid.ColumnDefinitions>
-                                        <StackLayout
-                                            Grid.Row="0"
-                                            Grid.ColumnSpan="2"
-                                            Orientation="Vertical">
-                                            <Label
-                                                FontFamily="PoppinsSemiBold"
-                                                FontSize="16"
-                                                Text="{Binding Operation}"
-                                                TextColor="{DynamicResource Black}" />
-                                            <Label
-                                                FontFamily="PoppinsRegular"
-                                                FontSize="12"
-                                                LineBreakMode="TailTruncation"
-                                                Text="{Binding Intitule}"
-                                                TextColor="{DynamicResource Gray400}" />
+                                        <StackLayout Grid.Row="0" Orientation="Horizontal">
+                                            <StackLayout Orientation="Vertical">
+                                                <Label FontFamily="Bold"
+                                                       FontSize="11"
+                                                       HorizontalOptions="StartAndExpand"
+                                                       Text="{Binding DateOperation, StringFormat='{0:d MMM yyyy | HH:mm}'}"
+                                                       TextColor="{DynamicResource Gray900}" />
+                                                <Label Text="{Binding Intitule}"
+                                                       FontSize="10" TextColor="{DynamicResource Gray400}"/>
+                                            </StackLayout>
+                                            <Label FontFamily="Bold"
+                                                   HorizontalOptions="EndAndExpand"
+                                                   FontSize="11"
+                                                   TextColor="{Binding Color}"
+                                                   Text="{Binding Montant, StringFormat='FCFA {0:#,0}'}" />
                                         </StackLayout>
-                                        <StackLayout
-                                            Grid.Row="0"
-                                            Grid.Column="2"
-                                            Orientation="Vertical">
-                                            <Label
-                                                FontFamily="PoppinsSemiBold"
-                                                FontSize="14"
-                                                Text="{Binding Montant, StringFormat='{0:#,0} XAF'}" />
-                                            <Label
-                                                FontFamily="PoppinsRegular"
-                                                FontSize="14"
-                                                HorizontalOptions="CenterAndExpand"
-                                                Text="{Binding DateOperation, StringFormat='{0:dd/MM/yyyy à HH:mm}'}"
-                                                TextColor="{DynamicResource Gray400}" />
-                                        </StackLayout>
-                                        <StackLayout
-                                            Grid.Row="1"
-                                            Grid.ColumnSpan="3"
-                                            Orientation="Horizontal">
-                                            <Frame
-                                                Padding="0"
-                                                BackgroundColor="{DynamicResource Primary}"
-                                                BorderColor="Transparent"
-                                                CornerRadius="0"
-                                                HeightRequest="30"
-                                                WidthRequest="75">
-                                                <Label
-                                                    FontFamily="PoppinsRegular"
-                                                    FontSize="12"
-                                                    HorizontalOptions="CenterAndExpand"
-                                                    Text="{Binding Operation}"
-                                                    TextColor="{DynamicResource White}"
-                                                    VerticalOptions="CenterAndExpand" />
-                                            </Frame>
+                                        <StackLayout Orientation="Horizontal"
+                                                     Grid.Row="1">
+                                            <BoxView WidthRequest="1" 
+                                                     HeightRequest="55" Color="{DynamicResource Gray200}" />
+                                            <StackLayout Orientation="Vertical" Margin="5,0,0,0">
+                                                <Label Text="Txn ID:" FontSize="11" 
+                                                       TextColor="{DynamicResource Gray300}" />
+                                                <Label Text="Txn Type:" FontSize="11" 
+                                                       TextColor="{DynamicResource Gray300}" />
+                                                <Label Text="Txn Frais:" FontSize="11" 
+                                                       TextColor="{DynamicResource Gray300}" />
+                                            </StackLayout>
+                                            <StackLayout HorizontalOptions="EndAndExpand">
+                                                <Label Text="{Binding IdTransaction}"
+                                                       FontSize="11"
+                                                       HorizontalOptions="End"
+                                                       TextColor="{DynamicResource Gray300}" />
+                                                <Label Text="{Binding Operation}"
+                                                       FontSize="11"
+                                                       HorizontalOptions="End"
+                                                       TextColor="{DynamicResource Gray300}" />
+                                                <Label Text="{Binding Frais,StringFormat='FCFA {0:#,0}'}"
+                                                       FontSize="11"
+                                                       HorizontalOptions="End"
+                                                       TextColor="{DynamicResource Gray300}" />
+                                            </StackLayout>
                                         </StackLayout>
                                     </Grid>
                                 </Frame>

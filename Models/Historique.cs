@@ -23,26 +23,25 @@ namespace LOFI.Models
         public decimal? Frais { get; set; }
         public int? IdBenef { get; set; }
         public string Motif { get; set; }
-        public string Color
+        public Color Color
         {
             get
             {
                 if (Operation == Links.Appro)
                 {
-                    return Links.ApproColor;
+                    return Color.FromHex(Links.ApproColor);
                 }else if(Operation == Links.Retrait)
                 {
-                    return Links.RetraitColor;
+                    return Color.FromHex(Links.RetraitColor);
                 }else if (Operation == Links.Transfert)
                 {
-                    return Links.TransfertColor;
+                    return Color.FromHex(Links.TransfertColor);
                 }
                 else
                 {
-                    return Links.PayementColor;
+                    return Color.FromHex(Links.PayementColor);
                 }
             }
-            set { Operation = value; }
         }
         public virtual Compte Compte { get; set; } = null!;
         public virtual Operateur Operateur { get; set; } = null!;

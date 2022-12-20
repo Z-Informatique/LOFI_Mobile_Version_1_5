@@ -9,33 +9,20 @@
     Shell.FlyoutBehavior="Disabled"
     Shell.NavBarIsVisible="True">
     <Shell.ToolbarItems>
-        
-        <ToolbarItem Order="Primary"
-                     Priority="0">
-            <ToolbarItem.IconImageSource>
-                <FontImageSource FontFamily="materialfont"
-                                 Glyph="{x:Static helpers:IconsClass.QrcodeScan}"
-                                 Size="20" />
-            </ToolbarItem.IconImageSource>
-        </ToolbarItem>
-        
-        <ToolbarItem Text="Paramètres"
-                     Priority="1"
-                     Order="Secondary"
-                     Command="{Binding NavigateToSettingsPageCommand}" />
 
         <ToolbarItem Text="Profil"
-                     Priority="2"
-                     Order="Secondary"
-                     Command="{Binding NavigateToProfilePageCommand}" />
+                     Priority="0"
+                     Order="Secondary" />
 
         <ToolbarItem Text="Partager l'application"
-                     Priority="3"
+                     Priority="1"
                      Order="Secondary"
                      Command="{Binding NavigateToShareAppCommand}" />
 
         <ToolbarItem Text="Déconnexion"
-                     Priority="4"
+                     x:Name="toolLogout"
+                     Clicked="toolLogout_Clicked"
+                     Priority="2"
                      Order="Secondary"
                      Command="{Binding LogOutCommand}" />
     </Shell.ToolbarItems>
