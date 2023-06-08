@@ -38,6 +38,9 @@ public static class MauiProgram
         builder.Services.AddSingleton<HistoriquePage>();
         builder.Services.AddSingleton<HistoriqueViewModel>();
 
+        builder.Services.AddSingleton<BankPage>();
+        builder.Services.AddSingleton<BankViewModel>();
+
 
         return builder.Build();
     }

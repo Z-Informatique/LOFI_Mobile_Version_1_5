@@ -22,7 +22,7 @@ public partial class HomePage : ContentPage
 		await this.ShowPopupAsync(new InternetOfferPage());
     }
 	
-	private async void SendTapped(object sender, EventArgs e)
+	private async void SendTappedMoney(object sender, EventArgs e)
 	{
 		await this.ShowPopupAsync(new SendMoneyPage());
     }
@@ -30,6 +30,11 @@ public partial class HomePage : ContentPage
 	private async void TappedElect(object sender, EventArgs e)
 	{
 		await this.ShowPopupAsync(new ElectPage());
+    }
+	
+	private async void CompteTapped(object sender, EventArgs e)
+	{
+		await this.ShowPopupAsync(new ComptePopupPage());
     }
 
 	private async void TapGestureRecognizer_Tapped(object sender, EventArgs e)

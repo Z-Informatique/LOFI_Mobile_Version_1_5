@@ -263,7 +263,7 @@
                                 </StackLayout>
                             </StackLayout>
 
-                            <Label Text="Opérations Mobile Money"
+                            <Label Text="Opérations Mobile"
                                    FontFamily="Bold"
                                    TextColor="{DynamicResource Gray900}"
                                    FontSize="12" />
@@ -307,7 +307,7 @@
                                              HorizontalOptions="Center">
                                     <StackLayout.GestureRecognizers>
                                         <TapGestureRecognizer NumberOfTapsRequired="1"
-                                                              Tapped="SendTapped" />
+                                                              Tapped="SendTappedMoney" />
                                     </StackLayout.GestureRecognizers>
                                     <Frame Padding="4"
                                            BackgroundColor="{DynamicResource LightPrimary}"
@@ -318,7 +318,7 @@
                                            CornerRadius="50">
                                         <Frame.GestureRecognizers>
                                             <TapGestureRecognizer NumberOfTapsRequired="1"
-                                                                  Tapped="SendTapped" />
+                                                                  Tapped="SendTappedMoney" />
                                         </Frame.GestureRecognizers>
                                         <Label FontFamily="materialfont"
                                                HorizontalOptions="CenterAndExpand"
@@ -338,7 +338,7 @@
                                              HorizontalOptions="Center">
                                     <StackLayout.GestureRecognizers>
                                         <TapGestureRecognizer NumberOfTapsRequired="1"
-                                                              Tapped="TapGestureRecognizer_Tapped" />
+                                                              Tapped="SendTappedMoney" />
                                     </StackLayout.GestureRecognizers>
                                     <Frame Padding="4"
                                            BackgroundColor="{DynamicResource LightPrimary}"
@@ -349,7 +349,7 @@
                                            CornerRadius="50">
                                         <Frame.GestureRecognizers>
                                             <TapGestureRecognizer NumberOfTapsRequired="1"
-                                                                  Tapped="TapGestureRecognizer_Tapped" />
+                                                                  Tapped="SendTappedMoney" />
                                         </Frame.GestureRecognizers>
                                         <Label FontFamily="materialfont"
                                                HorizontalOptions="CenterAndExpand"
@@ -364,7 +364,7 @@
                                            TextColor="{DynamicResource Gray400}" />
                                 </StackLayout>
                             </StackLayout>
-                            <Label Text="Activités sur mon compte"
+                            <Label Text="Mon compte"
                                    FontFamily="Bold"
                                    TextColor="{DynamicResource Gray900}"
                                    FontSize="12" />
@@ -377,7 +377,7 @@
                                              HorizontalOptions="Center">
                                     <StackLayout.GestureRecognizers>
                                         <TapGestureRecognizer NumberOfTapsRequired="1"
-                                                              Tapped="TapGestureRecognizer_Tapped" />
+                                                              Tapped="CompteTapped" />
                                     </StackLayout.GestureRecognizers>
                                     <Frame Padding="4"
                                            BackgroundColor="{DynamicResource LightPrimary}"
@@ -388,7 +388,7 @@
                                            CornerRadius="50">
                                         <Frame.GestureRecognizers>
                                             <TapGestureRecognizer NumberOfTapsRequired="1"
-                                                                  Tapped="TapGestureRecognizer_Tapped" />
+                                                                  Tapped="CompteTapped" />
                                         </Frame.GestureRecognizers>
                                         <Label FontFamily="materialfont"
                                                HorizontalOptions="CenterAndExpand"
@@ -439,7 +439,7 @@
                                              HorizontalOptions="Center">
                                     <StackLayout.GestureRecognizers>
                                         <TapGestureRecognizer NumberOfTapsRequired="1"
-                                                              Tapped="TapGestureRecognizer_Tapped" />
+                                                              Tapped="CompteTapped" />
                                     </StackLayout.GestureRecognizers>
                                     <Frame Padding="4"
                                            BackgroundColor="{DynamicResource LightPrimary}"
@@ -450,7 +450,7 @@
                                            CornerRadius="50">
                                         <Frame.GestureRecognizers>
                                             <TapGestureRecognizer NumberOfTapsRequired="1"
-                                                                  Tapped="TapGestureRecognizer_Tapped" />
+                                                                  Tapped="CompteTapped" />
                                         </Frame.GestureRecognizers>
                                         <Label FontFamily="materialfont"
                                                HorizontalOptions="CenterAndExpand"

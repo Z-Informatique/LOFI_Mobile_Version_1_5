@@ -2,12 +2,110 @@
 <ContentPage
     x:Class="LOFI.Pages.BankPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    Title="MON COMPTE">
-    <VerticalStackLayout>
-        <Label
-            HorizontalOptions="Center"
-            Text="Banque page"
-            VerticalOptions="Center" />
-    </VerticalStackLayout>
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:helpers="clr-namespace:LOFI.Helpers"
+             xmlns:model="clr-namespace:LOFI.Models"
+             xmlns:local="clr-namespace:LOFI.ViewModels"
+             x:DataType="local:BankViewModel"
+             Title="COMPTE">
+
+    <Grid Padding="20" RowSpacing="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Frame Grid.Row="0"
+               BackgroundColor="{DynamicResource Primary}"
+               BorderColor="Transparent">
+            <StackLayout Spacing="10"
+                         Orientation="Vertical">
+                <StackLayout Orientation="Horizontal">
+                    <StackLayout Orientation="Vertical">
+                        <Label Text="Balance"
+                               TextColor="{DynamicResource White}"
+                               FontSize="11"
+                               FontFamily="Bold" />
+                        <Label Text="{Binding CompteUser.Solde, StringFormat='{0:### ### CFA}'}"
+                               FontFamily="Bold"
+                               TextColor="{DynamicResource White}" />
+                    </StackLayout>
+                    <Label Text="MONEY TRANSFERT"
+                           FontFamily="Bold"
+                           VerticalOptions="CenterAndExpand"
+                           TextColor="{DynamicResource White}"
+                           HorizontalOptions="EndAndExpand" />
+                </StackLayout>
+            </StackLayout>
+        </Frame>
+
+        <Frame Grid.Row="1" BackgroundColor="{DynamicResource Secondary}" BorderColor="Transparent">
+            <StackLayout Spacing="10" Orientation="Vertical">
+                <StackLayout Orientation="Horizontal">
+                    <StackLayout Orientation="Vertical">
+                        <Label Text="Balance"
+                               FontSize="11" FontFamily="Bold" />
+                        <Label Text="{Binding SoldeMtn, StringFormat='{0:### ### CFA}'}" FontFamily="Bold" 
+                               TextColor="{DynamicResource Primary}"/>
+                    </StackLayout>
+                    <Button Text="Afficher mon solde mobile"
+                            BorderColor="{DynamicResource Primary}"
+                            BorderWidth="1"
+                            CornerRadius="50"
+                            FontFamily="Bold"
+                            HeightRequest="30"
+                            HorizontalOptions="EndAndExpand"
+                            FontSize="10"
+                            Padding="8"
+                            Command="{Binding getSoldeCommand}"
+                            Background="Transparent"
+                            TextColor="{DynamicResource Gray900}" />
+                </StackLayout>
+                <BoxView HeightRequest="1" Color="{DynamicResource Tertiary}"/>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Opérateur" />
+                    <Label Text="MTN CONGO" FontFamily="Bold" HorizontalOptions="EndAndExpand" />
+                </StackLayout>
+            </StackLayout>
+        </Frame>
+
+        <Frame Grid.Row="2" BackgroundColor="{DynamicResource Red}" BorderColor="Transparent">
+            <StackLayout Spacing="10" Orientation="Vertical">
+                <StackLayout Orientation="Horizontal">
+                    <StackLayout Orientation="Vertical">
+                        <Label Text="Balance"
+                               TextColor="{DynamicResource White}"
+                               FontSize="11" FontFamily="Bold" />
+                        <Label Text="{Binding SoldeAirtel, StringFormat='{0:### ### CFA}'}" FontFamily="Bold" 
+                               TextColor="{DynamicResource White}"/>
+                    </StackLayout>
+                    <Button Text="Afficher mon solde mobile"
+                            BorderColor="{DynamicResource White}"
+                            BorderWidth="1"
+                            CornerRadius="50"
+                            FontFamily="Bold"
+                            HeightRequest="30"
+                            HorizontalOptions="EndAndExpand"
+                            FontSize="10"
+                            Padding="8"
+                            Command="{Binding getSoldeAirtelCommand}"
+                            Background="Transparent"
+                            TextColor="{DynamicResource White}" />
+                </StackLayout>
+                <BoxView HeightRequest="1" 
+                         Color="{DynamicResource White}"/>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Opérateur" />
+                    <Label Text="AIRTEL CONGO"
+                           FontFamily="Bold"
+                           TextColor="{DynamicResource White}"
+                           HorizontalOptions="EndAndExpand" />
+                </StackLayout>
+            </StackLayout>
+        </Frame>
+
+        
+
+    </Grid>
 </ContentPage>

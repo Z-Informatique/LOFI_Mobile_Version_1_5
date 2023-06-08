@@ -120,7 +120,7 @@ public partial class HomeViewModel : ObservableObject
             IsBusy = true;
             if (Helpers.Settings.UserRole == "0")
             {
-                CompteUser = await CompteService.CompteAsync(Convert.ToInt32(Helpers.Settings.IdUser));
+                CompteUser = await CompteService.CompteAsync(Convert.ToInt32(Settings.IdUser));
                 Settings.Compte = serializeClass.Serialize(CompteUser);
             }
         }

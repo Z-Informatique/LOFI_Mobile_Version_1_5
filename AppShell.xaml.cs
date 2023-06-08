@@ -12,6 +12,7 @@ public partial class AppShell : Shell
         Routing.RegisterRoute(nameof(HomePage), typeof(HomePage));
         Routing.RegisterRoute(nameof(HistoriquePage), typeof(HistoriquePage));
         Routing.RegisterRoute(nameof(BarCodePage), typeof(BarCodePage));
+        Routing.RegisterRoute(nameof(BankPage), typeof(BankPage));
     }
 
     private async void toolLogout_Clicked(object sender, EventArgs e)

@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="LOFI.Pages.BarCodePage"
              xmlns:zxing="clr-namespace:ZXing.Net.Maui.Controls;assembly=ZXing.Net.MAUI"
-             Title="Scanner pour payer">
+             Title="SCANNER">
     <VerticalStackLayout>
 
         <zxing:CameraBarcodeReaderView 

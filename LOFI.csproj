@@ -85,6 +85,9 @@
 	  <MauiXaml Update="Pages\LoginPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Pages\ModalPage\ComptePopupPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Pages\ModalPage\ElectPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
