@@ -45,11 +45,12 @@
 
                         <StackLayout Grid.Row="0"
                                      BackgroundColor="{DynamicResource Primary}" />
-                        <Frame Grid.Row="1"
-                               Margin="10,-60,10,0"
-                               Background="{DynamicResource White}"
-                               BorderColor="Transparent"
-                               HasShadow="True">
+                        <Border Grid.Row="1"
+                               Margin="10,-70,10,0"
+                                Padding="10"
+                                StrokeThickness="0"
+                                StrokeShape="RoundRectangle 10"
+                               Background="{DynamicResource White}">
                             <StackLayout>
                                 <StackLayout Orientation="Vertical">
                                     <StackLayout Orientation="Horizontal">
@@ -57,24 +58,29 @@
                                                      HorizontalOptions="FillAndExpand">
                                             <Label Text="{Binding FullName}"
                                                    FontSize="12"
-                                                   TextColor="{DynamicResource Gray600}" />
+                                                   TextColor="{DynamicResource Gray900}" />
                                             <Label Text="{Binding Telephone}"
                                                    FontSize="11"
                                                    FontFamily="Regular"
-                                                   TextColor="{DynamicResource Gray300}" />
+                                                   TextColor="{DynamicResource Orange}" />
                                         </StackLayout>
-                                        <Button Text="Afficher mon solde mobile"
-                                                BorderColor="{DynamicResource Primary}"
-                                                BorderWidth="1"
-                                                CornerRadius="50"
-                                                FontFamily="Bold"
-                                                HeightRequest="30"
-                                                HorizontalOptions="EndAndExpand"
-                                                FontSize="10"
-                                                Padding="8"
-                                                Command="{Binding getSoldeCommand}"
-                                                Background="Transparent"
-                                                TextColor="{DynamicResource Gray900}" />
+                                        <Border StrokeThickness="1"
+                                                StrokeShape="RoundRectangle 10"
+                                                Stroke="{DynamicResource Red}"
+                                                VerticalOptions="CenterAndExpand"
+                                                Padding="10">
+                                            <Border.GestureRecognizers>
+                                                <TapGestureRecognizer 
+                                                    NumberOfTapsRequired="1"
+                                                    Command="{Binding getSoldeCommand}" />
+                                            </Border.GestureRecognizers>
+                                            <Label Text="Afficher mon solde mobile"
+                                                    FontFamily="Bold"
+                                                    HorizontalOptions="CenterAndExpand"
+                                                   VerticalOptions="CenterAndExpand"
+                                                    FontSize="10"
+                                                    TextColor="{DynamicResource Red}" />
+                                        </Border>
                                     </StackLayout>
 
                                     <BoxView Margin="0,10,0,10"
@@ -83,14 +89,16 @@
 
                                     <StackLayout Orientation="Horizontal">
                                         <StackLayout Orientation="Vertical">
-                                            <Label Text="{Binding CompteUser.Solde}"
-                                                   TextColor="{DynamicResource Black}"
-                                                   FontSize="12"
-                                                   FontFamily="Bold" />
-                                            <Label Text="CFA"
-                                                   TextColor="{DynamicResource Red}"
-                                                   FontSize="11"
-                                                   FontFamily="Bold" />
+                                            <Label TextColor="{DynamicResource Gray600}"
+                                                   FontSize="12">
+                                                <Label.FormattedText>
+                                                    <FormattedString>
+                                                        <Span Text="{Binding CompteUser.Solde}"
+                                                              FontFamily="Bold" />
+                                                        <Span Text=" XAF" />
+                                                    </FormattedString>
+                                                </Label.FormattedText>
+                                            </Label>
                                             <Label Text="Compte Principal"
                                                    FontFamily="Regular"
                                                    FontSize="10"
@@ -100,15 +108,18 @@
                                                  WidthRequest="1"
                                                  Color="{DynamicResource Gray100}" />
                                         <StackLayout Orientation="Vertical">
-                                            <Label Text="{Binding CompteUser.Solde}"
-                                                   TextColor="{DynamicResource Black}"
-                                                   FontSize="12"
-                                                   FontFamily="Bold" />
-                                            <Label Text="CFA"
-                                                   TextColor="{DynamicResource Red}"
-                                                   FontSize="11"
-                                                   FontFamily="Bold" />
-                                            <Label Text="Compte Mobile"
+                                            <Label TextColor="{DynamicResource Gray600}"
+                                                   FontSize="12">
+                                                <Label.FormattedText>
+                                                    <FormattedString>
+                                                        <Span 
+                                                            Text="{Binding CompteUser.Solde}"
+                                                              FontFamily="Bold" />
+                                                        <Span Text=" XAF" />
+                                                    </FormattedString>
+                                                </Label.FormattedText>
+                                            </Label>
+                                            <Label Text="Mobile Money"
                                                    FontFamily="Regular"
                                                    FontSize="10"
                                                    TextColor="{DynamicResource Gray300}" />
@@ -116,7 +127,7 @@
                                     </StackLayout>
                                 </StackLayout>
                             </StackLayout>
-                        </Frame>
+                        </Border>
                     </Grid>
 
                     <Grid Grid.Row="1"
@@ -129,348 +140,234 @@
 
                         <StackLayout Grid.Row="0"
                                      Spacing="20">
-                            <Label Text="Payer son abonnement"
+                            <Label Text="Abonnements"
                                    FontFamily="Bold"
-                                   TextColor="{DynamicResource Gray900}"
+                                   TextColor="{DynamicResource Gray500}"
                                    FontSize="12" />
 
                             <StackLayout Orientation="Horizontal"
-                                         Spacing="50"
+                                         Spacing="10"
                                          HorizontalOptions="CenterAndExpand">
-                                <StackLayout Orientation="Vertical"
-                                             VerticalOptions="Center"
-                                             Spacing="6"
-                                             HorizontalOptions="Center">
-                                    <StackLayout.GestureRecognizers>
+
+                                <Border VerticalOptions="Center"
+                                        HorizontalOptions="Center"
+                                        StrokeThickness="0"
+                                        Padding="20">
+                                    <Border.GestureRecognizers>
                                         <TapGestureRecognizer NumberOfTapsRequired="1"
                                                               Tapped="TvTapped" />
-                                    </StackLayout.GestureRecognizers>
-                                    <Frame Padding="4"
-                                           BackgroundColor="{DynamicResource LightPrimary}"
-                                           BorderColor="Transparent"
-                                           HeightRequest="40"
-                                           WidthRequest="40"
-                                           IsClippedToBounds="True"
-                                           CornerRadius="50">
-                                        <Frame.GestureRecognizers>
-                                            <TapGestureRecognizer NumberOfTapsRequired="1"
-                                                                  Tapped="TvTapped" />
-                                        </Frame.GestureRecognizers>
+                                    </Border.GestureRecognizers>
+                                    <StackLayout>
                                         <Label FontFamily="materialfont"
                                                HorizontalOptions="CenterAndExpand"
                                                VerticalOptions="CenterAndExpand"
                                                Text="{x:Static helpers:IconsClass.Television}"
-                                               TextColor="{DynamicResource Tertiary}"
-                                               FontSize="20" />
-                                    </Frame>
-                                    <Label FontSize="12"
-                                           Text="Offres TV"
-                                           FontFamily="Regular"
-                                           TextColor="{DynamicResource Gray400}" />
-                                </StackLayout>
-                                <StackLayout Orientation="Vertical"
-                                             VerticalOptions="Center"
-                                             Spacing="6"
-                                             HorizontalOptions="Center">
-                                    <StackLayout.GestureRecognizers>
+                                               TextColor="{DynamicResource Indigo}"
+                                               FontSize="30" />
+                                        <Label FontSize="12"
+                                               Text="Bouquets TV"
+                                               FontFamily="Bold"
+                                               TextColor="{DynamicResource Black}" />
+                                    </StackLayout>
+                                </Border>
+
+                                <Border VerticalOptions="Center"
+                                        HorizontalOptions="Center"
+                                        StrokeThickness="0"
+                                        Padding="20">
+                                    <Border.GestureRecognizers>
                                         <TapGestureRecognizer NumberOfTapsRequired="1"
                                                               Tapped="NetworkTapped" />
-                                    </StackLayout.GestureRecognizers>
-                                    <Frame Padding="4"
-                                           BackgroundColor="{DynamicResource LightPrimary}"
-                                           BorderColor="Transparent"
-                                           HeightRequest="40"
-                                           WidthRequest="40"
-                                           IsClippedToBounds="True"
-                                           CornerRadius="50">
-                                        <Frame.GestureRecognizers>
-                                            <TapGestureRecognizer NumberOfTapsRequired="1"
-                                                                  Tapped="NetworkTapped" />
-                                        </Frame.GestureRecognizers>
+                                    </Border.GestureRecognizers>
+                                    <StackLayout>
                                         <Label FontFamily="materialfont"
                                                HorizontalOptions="CenterAndExpand"
                                                VerticalOptions="CenterAndExpand"
-                                               Text="{x:Static helpers:IconsClass.RadioTower}"
-                                               TextColor="{DynamicResource Tertiary}"
-                                               FontSize="20" />
-                                    </Frame>
-                                    <Label FontSize="12"
-                                           Text="Offres Internet"
-                                           FontFamily="Regular"
-                                           TextColor="{DynamicResource Gray400}" />
-                                </StackLayout>
-                                <!--<StackLayout Orientation="Vertical"
-                                             VerticalOptions="Center"
-                                             Spacing="6"
-                                             HorizontalOptions="Center">
-                                    <StackLayout.GestureRecognizers>
-                                        <TapGestureRecognizer NumberOfTapsRequired="1"
-                                                              Tapped="TapGestureRecognizer_Tapped" />
-                                    </StackLayout.GestureRecognizers>
-                                    <Frame Padding="4"
-                                           BackgroundColor="{DynamicResource LightPrimary}"
-                                           BorderColor="Transparent"
-                                           HeightRequest="40"
-                                           WidthRequest="40"
-                                           IsClippedToBounds="True"
-                                           CornerRadius="50">
-                                        <Frame.GestureRecognizers>
-                                            <TapGestureRecognizer NumberOfTapsRequired="1"
-                                                                  Tapped="TapGestureRecognizer_Tapped" />
-                                        </Frame.GestureRecognizers>
-                                        <Label FontFamily="materialfont"
-                                               HorizontalOptions="CenterAndExpand"
-                                               VerticalOptions="CenterAndExpand"
-                                               Text="{x:Static helpers:IconsClass.PhoneOutline}"
-                                               TextColor="{DynamicResource Tertiary}"
-                                               FontSize="20" />
-                                    </Frame>
-                                    <Label FontSize="12"
-                                           Text="Forfait appel"
-                                           FontFamily="Regular"
-                                           TextColor="{DynamicResource Gray400}" />
-                                </StackLayout>-->
-                                <StackLayout Orientation="Vertical"
-                                             VerticalOptions="Center"
-                                             Spacing="6"
-                                             HorizontalOptions="Center">
-                                    <StackLayout.GestureRecognizers>
+                                               Text="{x:Static helpers:IconsClass.Signal}"
+                                               TextColor="{DynamicResource Yello}"
+                                               FontSize="30" />
+                                        <Label FontSize="12"
+                                               Text="Internet"
+                                               FontFamily="Bold"
+                                               TextColor="{DynamicResource Black}" />
+                                    </StackLayout>
+                                </Border>
+
+                                <Border VerticalOptions="Center"
+                                        HorizontalOptions="Center"
+                                        StrokeThickness="0"
+                                        Padding="20">
+                                    <Border.GestureRecognizers>
                                         <TapGestureRecognizer NumberOfTapsRequired="1"
                                                               Tapped="TappedElect" />
-                                    </StackLayout.GestureRecognizers>
-                                    <Frame Padding="4"
-                                           BackgroundColor="{DynamicResource LightPrimary}"
-                                           BorderColor="Transparent"
-                                           HeightRequest="40"
-                                           WidthRequest="40"
-                                           IsClippedToBounds="True"
-                                           CornerRadius="50">
-                                        <Frame.GestureRecognizers>
-                                            <TapGestureRecognizer NumberOfTapsRequired="1"
-                                                                  Tapped="TappedElect" />
-                                        </Frame.GestureRecognizers>
+                                    </Border.GestureRecognizers>
+                                    <StackLayout>
                                         <Label FontFamily="materialfont"
                                                HorizontalOptions="CenterAndExpand"
                                                VerticalOptions="CenterAndExpand"
                                                Text="{x:Static helpers:IconsClass.ElectricSwitch}"
-                                               TextColor="{DynamicResource Tertiary}"
-                                               FontSize="20" />
-                                    </Frame>
-                                    <Label FontSize="12"
-                                           Text="Electricité"
-                                           FontFamily="Regular"
-                                           TextColor="{DynamicResource Gray400}" />
-                                </StackLayout>
+                                               TextColor="{DynamicResource Green}"
+                                               FontSize="30" />
+                                        <Label FontSize="12"
+                                               Text="Electricité"
+                                               FontFamily="Bold"
+                                               TextColor="{DynamicResource Black}" />
+                                    </StackLayout>
+                                </Border>
                             </StackLayout>
 
-                            <Label Text="Opérations Mobile"
+                            <Label Text="Transfert d'argent"
                                    FontFamily="Bold"
-                                   TextColor="{DynamicResource Gray900}"
+                                   TextColor="{DynamicResource Gray500}"
                                    FontSize="12" />
                             <StackLayout Orientation="Horizontal"
-                                         Spacing="40"
+                                         Spacing="10"
                                          HorizontalOptions="CenterAndExpand">
-                                <StackLayout Orientation="Vertical"
-                                             VerticalOptions="Center"
-                                             Spacing="6"
-                                             HorizontalOptions="Center">
-                                    <StackLayout.GestureRecognizers>
+
+                                <Border VerticalOptions="Center"
+                                        HorizontalOptions="Center"
+                                        StrokeThickness="0"
+                                        Padding="20">
+                                    <Border.GestureRecognizers>
                                         <TapGestureRecognizer NumberOfTapsRequired="1"
                                                               Tapped="TapGestureRecognizer_Tapped" />
-                                    </StackLayout.GestureRecognizers>
-                                    <Frame Padding="4"
-                                           BackgroundColor="{DynamicResource LightPrimary}"
-                                           BorderColor="Transparent"
-                                           HeightRequest="40"
-                                           WidthRequest="40"
-                                           IsClippedToBounds="True"
-                                           CornerRadius="50">
-                                        <Frame.GestureRecognizers>
-                                            <TapGestureRecognizer NumberOfTapsRequired="1"
-                                                                  Tapped="TapGestureRecognizer_Tapped" />
-                                        </Frame.GestureRecognizers>
+                                    </Border.GestureRecognizers>
+                                    <StackLayout>
                                         <Label FontFamily="materialfont"
                                                HorizontalOptions="CenterAndExpand"
                                                VerticalOptions="CenterAndExpand"
-                                               Text="{x:Static helpers:IconsClass.Cash100}"
-                                               TextColor="{DynamicResource Tertiary}"
-                                               FontSize="20" />
-                                    </Frame>
-                                    <Label FontSize="12"
-                                           Text="Opération GIMAC"
-                                           FontFamily="Regular"
-                                           TextColor="{DynamicResource Gray400}" />
-                                </StackLayout>
-                                <StackLayout Orientation="Vertical"
-                                             VerticalOptions="Center"
-                                             Spacing="6"
-                                             HorizontalOptions="Center">
-                                    <StackLayout.GestureRecognizers>
+                                               Text="{x:Static helpers:IconsClass.Transfer}"
+                                               TextColor="{DynamicResource Blue100Accent}"
+                                               FontSize="30" />
+                                        <Label FontSize="12"
+                                               Text="Op. GIMAC"
+                                               FontFamily="Bold"
+                                               TextColor="{DynamicResource Black}" />
+                                    </StackLayout>
+                                </Border>
+
+                                <Border VerticalOptions="Center"
+                                        HorizontalOptions="Center"
+                                        StrokeThickness="0"
+                                        Padding="20">
+                                    <Border.GestureRecognizers>
                                         <TapGestureRecognizer NumberOfTapsRequired="1"
-                                                              Tapped="SendTappedMoney" />
-                                    </StackLayout.GestureRecognizers>
-                                    <Frame Padding="4"
-                                           BackgroundColor="{DynamicResource LightPrimary}"
-                                           BorderColor="Transparent"
-                                           HeightRequest="40"
-                                           WidthRequest="40"
-                                           IsClippedToBounds="True"
-                                           CornerRadius="50">
-                                        <Frame.GestureRecognizers>
-                                            <TapGestureRecognizer NumberOfTapsRequired="1"
-                                                                  Tapped="SendTappedMoney" />
-                                        </Frame.GestureRecognizers>
+                                                              Tapped="TapGestureRecognizer_Tapped" />
+                                    </Border.GestureRecognizers>
+                                    <StackLayout>
                                         <Label FontFamily="materialfont"
                                                HorizontalOptions="CenterAndExpand"
                                                VerticalOptions="CenterAndExpand"
-                                               Text="{x:Static helpers:IconsClass.SwapHorizontal}"
-                                               TextColor="{DynamicResource Tertiary}"
-                                               FontSize="20" />
-                                    </Frame>
-                                    <Label FontSize="12"
-                                           Text="MTN - AIRTEL"
-                                           FontFamily="Regular"
-                                           TextColor="{DynamicResource Gray400}" />
-                                </StackLayout>
-                                <StackLayout Orientation="Vertical"
-                                             VerticalOptions="Center"
-                                             Spacing="6"
-                                             HorizontalOptions="Center">
-                                    <StackLayout.GestureRecognizers>
+                                               Text="{x:Static helpers:IconsClass.CashCheck}"
+                                               TextColor="{DynamicResource Red}"
+                                               FontSize="30" />
+                                        <Label FontSize="12"
+                                               Text="MTN - AIRTEL"
+                                               FontFamily="Bold"
+                                               TextColor="{DynamicResource Black}" />
+                                    </StackLayout>
+                                </Border>
+
+                                <Border VerticalOptions="Center"
+                                        HorizontalOptions="Center"
+                                        StrokeThickness="0"
+                                        Padding="20">
+                                    <Border.GestureRecognizers>
                                         <TapGestureRecognizer NumberOfTapsRequired="1"
-                                                              Tapped="SendTappedMoney" />
-                                    </StackLayout.GestureRecognizers>
-                                    <Frame Padding="4"
-                                           BackgroundColor="{DynamicResource LightPrimary}"
-                                           BorderColor="Transparent"
-                                           HeightRequest="40"
-                                           WidthRequest="40"
-                                           IsClippedToBounds="True"
-                                           CornerRadius="50">
-                                        <Frame.GestureRecognizers>
-                                            <TapGestureRecognizer NumberOfTapsRequired="1"
-                                                                  Tapped="SendTappedMoney" />
-                                        </Frame.GestureRecognizers>
+                                                              Tapped="TapGestureRecognizer_Tapped" />
+                                    </Border.GestureRecognizers>
+                                    <StackLayout>
                                         <Label FontFamily="materialfont"
                                                HorizontalOptions="CenterAndExpand"
                                                VerticalOptions="CenterAndExpand"
-                                               Text="{x:Static helpers:IconsClass.Cash100}"
-                                               TextColor="{DynamicResource Tertiary}"
-                                               FontSize="20" />
-                                    </Frame>
-                                    <Label FontSize="12"
-                                           Text="Retiré de l'argent"
-                                           FontFamily="Regular"
-                                           TextColor="{DynamicResource Gray400}" />
-                                </StackLayout>
+                                               Text="{x:Static helpers:IconsClass.TransferDown}"
+                                               TextColor="{DynamicResource Orange}"
+                                               FontSize="30" />
+                                        <Label FontSize="12"
+                                               Text="RETRAIT"
+                                               FontFamily="Bold"
+                                               TextColor="{DynamicResource Black}" />
+                                    </StackLayout>
+                                </Border>
                             </StackLayout>
                             <Label Text="Mon compte"
                                    FontFamily="Bold"
-                                   TextColor="{DynamicResource Gray900}"
+                                   TextColor="{DynamicResource Gray500}"
                                    FontSize="12" />
                             <StackLayout Orientation="Horizontal"
-                                         Spacing="30"
+                                         Spacing="10"
                                          HorizontalOptions="CenterAndExpand">
-                                <StackLayout Orientation="Vertical"
-                                             VerticalOptions="Center"
-                                             Spacing="6"
-                                             HorizontalOptions="Center">
-                                    <StackLayout.GestureRecognizers>
+                                <Border VerticalOptions="Center"
+                                        HorizontalOptions="Center"
+                                        StrokeThickness="0"
+                                        Padding="20">
+                                    <Border.GestureRecognizers>
                                         <TapGestureRecognizer NumberOfTapsRequired="1"
                                                               Tapped="CompteTapped" />
-                                    </StackLayout.GestureRecognizers>
-                                    <Frame Padding="4"
-                                           BackgroundColor="{DynamicResource LightPrimary}"
-                                           BorderColor="Transparent"
-                                           HeightRequest="40"
-                                           WidthRequest="40"
-                                           IsClippedToBounds="True"
-                                           CornerRadius="50">
-                                        <Frame.GestureRecognizers>
-                                            <TapGestureRecognizer NumberOfTapsRequired="1"
-                                                                  Tapped="CompteTapped" />
-                                        </Frame.GestureRecognizers>
+                                    </Border.GestureRecognizers>
+                                    <StackLayout>
                                         <Label FontFamily="materialfont"
                                                HorizontalOptions="CenterAndExpand"
                                                VerticalOptions="CenterAndExpand"
-                                               Text="{x:Static helpers:IconsClass.PlusCircleOutline}"
-                                               TextColor="{DynamicResource Tertiary}"
-                                               FontSize="20" />
-                                    </Frame>
-                                    <Label FontSize="12"
-                                           Text="Recharger"
-                                           FontFamily="Regular"
-                                           TextColor="{DynamicResource Gray400}" />
-                                </StackLayout>
-                                <StackLayout Orientation="Vertical"
-                                             VerticalOptions="Center"
-                                             Spacing="6"
-                                             HorizontalOptions="Center">
-                                    <StackLayout.GestureRecognizers>
-                                        <TapGestureRecognizer NumberOfTapsRequired="1"
-                                                              Tapped="TapGestureRecognizer_Tapped" />
-                                    </StackLayout.GestureRecognizers>
-                                    <Frame Padding="4"
-                                           BackgroundColor="{DynamicResource LightPrimary}"
-                                           BorderColor="Transparent"
-                                           HeightRequest="40"
-                                           WidthRequest="40"
-                                           IsClippedToBounds="True"
-                                           CornerRadius="50">
-                                        <Frame.GestureRecognizers>
-                                            <TapGestureRecognizer NumberOfTapsRequired="1"
-                                                                  Tapped="TapGestureRecognizer_Tapped" />
-                                        </Frame.GestureRecognizers>
-                                        <Label FontFamily="materialfont"
-                                               HorizontalOptions="CenterAndExpand"
-                                               VerticalOptions="CenterAndExpand"
-                                               Text="{x:Static helpers:IconsClass.SwapHorizontal}"
-                                               TextColor="{DynamicResource Tertiary}"
-                                               FontSize="20" />
-                                    </Frame>
-                                    <Label FontSize="12"
-                                           Text="Transférer del'argent"
-                                           FontFamily="Regular"
-                                           TextColor="{DynamicResource Gray400}" />
-                                </StackLayout>
-                                <StackLayout Orientation="Vertical"
-                                             VerticalOptions="Center"
-                                             Spacing="6"
-                                             HorizontalOptions="Center">
-                                    <StackLayout.GestureRecognizers>
+                                               Text="{x:Static helpers:IconsClass.Plus}"
+                                               TextColor="{DynamicResource Indigo}"
+                                               FontSize="30" />
+                                        <Label FontSize="12"
+                                               Text="RECHARGER"
+                                               FontFamily="Bold"
+                                               TextColor="{DynamicResource Black}" />
+                                    </StackLayout>
+                                </Border>
+                                <Border VerticalOptions="Center"
+                                        HorizontalOptions="Center"
+                                        StrokeThickness="0"
+                                        Padding="20">
+                                    <Border.GestureRecognizers>
                                         <TapGestureRecognizer NumberOfTapsRequired="1"
                                                               Tapped="CompteTapped" />
-                                    </StackLayout.GestureRecognizers>
-                                    <Frame Padding="4"
-                                           BackgroundColor="{DynamicResource LightPrimary}"
-                                           BorderColor="Transparent"
-                                           HeightRequest="40"
-                                           WidthRequest="40"
-                                           IsClippedToBounds="True"
-                                           CornerRadius="50">
-                                        <Frame.GestureRecognizers>
-                                            <TapGestureRecognizer NumberOfTapsRequired="1"
-                                                                  Tapped="CompteTapped" />
-                                        </Frame.GestureRecognizers>
+                                    </Border.GestureRecognizers>
+                                    <StackLayout>
                                         <Label FontFamily="materialfont"
                                                HorizontalOptions="CenterAndExpand"
                                                VerticalOptions="CenterAndExpand"
-                                               Text="{x:Static helpers:IconsClass.Cash100}"
-                                               TextColor="{DynamicResource Tertiary}"
-                                               FontSize="20" />
-                                    </Frame>
-                                    <Label FontSize="12"
-                                           Text="Retiré de l'argent"
-                                           FontFamily="Regular"
-                                           TextColor="{DynamicResource Gray400}" />
-                                </StackLayout>
+                                               Text="{x:Static helpers:IconsClass.TransferUp}"
+                                               TextColor="{DynamicResource Green}"
+                                               FontSize="30" />
+                                        <Label FontSize="12"
+                                               Text="TRANSFERT"
+                                               FontFamily="Bold"
+                                               TextColor="{DynamicResource Black}" />
+                                    </StackLayout>
+                                </Border>
+
+                                <Border VerticalOptions="Center"
+                                        HorizontalOptions="Center"
+                                        StrokeThickness="0"
+                                        Padding="20">
+                                    <Border.GestureRecognizers>
+                                        <TapGestureRecognizer NumberOfTapsRequired="1"
+                                                              Tapped="CompteTapped" />
+                                    </Border.GestureRecognizers>
+                                    <StackLayout>
+                                        <Label FontFamily="materialfont"
+                                               HorizontalOptions="CenterAndExpand"
+                                               VerticalOptions="CenterAndExpand"
+                                               Text="{x:Static helpers:IconsClass.TransferDown}"
+                                               TextColor="{DynamicResource Orange}"
+                                               FontSize="30" />
+                                        <Label FontSize="12"
+                                               Text="RETRAIT"
+                                               FontFamily="Bold"
+                                               TextColor="{DynamicResource Black}" />
+                                    </StackLayout>
+                                </Border>
                             </StackLayout>
 
                             <StackLayout Orientation="Horizontal"
                                          Margin="0,10">
                                 <Label Text="DERNIERES ACTIVITES"
                                        FontFamily="Bold"
-                                       TextColor="{DynamicResource Red}"
+                                       TextColor="{DynamicResource Black}"
                                        FontSize="12" />
                                 <Button Text="Tout afficher"
                                         FontSize="12"
@@ -509,7 +406,7 @@
                                                                FontSize="11"
                                                                HorizontalOptions="StartAndExpand"
                                                                Text="{Binding DateOperation, StringFormat='{0:d MMM yyyy | HH:mm}'}"
-                                                               TextColor="{DynamicResource Gray900}" />
+                                                               TextColor="{DynamicResource Gray500}" />
                                                         <Label Text="{Binding Intitule}"
                                                                FontSize="10"
                                                                TextColor="{DynamicResource Gray400}" />
@@ -518,7 +415,7 @@
                                                            HorizontalOptions="EndAndExpand"
                                                            FontSize="11"
                                                            TextColor="{Binding Color}"
-                                                           Text="{Binding Montant, StringFormat='FCFA {0:#,0}'}" />
+                                                           Text="{Binding Montant, StringFormat='XAF {0:#,0}'}" />
                                                 </StackLayout>
                                                 <StackLayout Orientation="Horizontal"
                                                              Grid.Row="1">
@@ -546,10 +443,11 @@
                                                                FontSize="11"
                                                                HorizontalOptions="End"
                                                                TextColor="{DynamicResource Gray300}" />
-                                                        <Label Text="{Binding Frais,StringFormat='FCFA {0:#,0}'}"
+                                                        <Label Text="{Binding Frais,StringFormat='XAF {0:#,0}'}"
                                                                FontSize="11"
+                                                               FontFamily="Bold"
                                                                HorizontalOptions="End"
-                                                               TextColor="{DynamicResource Gray300}" />
+                                                               TextColor="{DynamicResource Gray600}" />
                                                     </StackLayout>
                                                 </StackLayout>
                                             </Grid>

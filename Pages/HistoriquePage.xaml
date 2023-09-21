@@ -58,7 +58,7 @@
                                                        FontSize="11"
                                                        HorizontalOptions="StartAndExpand"
                                                        Text="{Binding DateOperation, StringFormat='{0:d MMM yyyy | HH:mm}'}"
-                                                       TextColor="{DynamicResource Gray900}" />
+                                                       TextColor="{DynamicResource Gray500}" />
                                                 <Label Text="{Binding Intitule}"
                                                        FontSize="10" TextColor="{DynamicResource Gray400}"/>
                                             </StackLayout>
@@ -66,7 +66,7 @@
                                                    HorizontalOptions="EndAndExpand"
                                                    FontSize="11"
                                                    TextColor="{Binding Color}"
-                                                   Text="{Binding Montant, StringFormat='FCFA {0:#,0}'}" />
+                                                   Text="{Binding Montant, StringFormat='XAF {0:#,0}'}" />
                                         </StackLayout>
                                         <StackLayout Orientation="Horizontal"
                                                      Grid.Row="1">
@@ -89,10 +89,10 @@
                                                        FontSize="11"
                                                        HorizontalOptions="End"
                                                        TextColor="{DynamicResource Gray300}" />
-                                                <Label Text="{Binding Frais,StringFormat='FCFA {0:#,0}'}"
+                                                <Label Text="{Binding Frais,StringFormat='XAF {0:#,0}'}"
                                                        FontSize="11"
                                                        HorizontalOptions="End"
-                                                       TextColor="{DynamicResource Gray300}" />
+                                                       TextColor="{DynamicResource Gray900}" />
                                             </StackLayout>
                                         </StackLayout>
                                     </Grid>

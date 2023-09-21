@@ -76,7 +76,7 @@ public partial class HomeViewModel : ObservableObject
         FullName = Settings.Nom + " " + Settings.Prenom;
         Telephone = Settings.Telephone;
 
-        getUserCredentialApiKey();
+        //getUserCredentialApiKey();
         getCompte();
         GetHistorique();
     }
@@ -88,23 +88,23 @@ public partial class HomeViewModel : ObservableObject
         {
             UniqueRef = Preferences.Get("uuid", string.Empty);
 
-            if (string.IsNullOrEmpty(UniqueRef))
-            {
-                UniqueRef = newUId.ToString();
+            //if (string.IsNullOrEmpty(UniqueRef))
+            //{
+            //    UniqueRef = newUId.ToString();
 
-                UserCreateModel userCreateModel = new UserCreateModel
-                {
-                    providerCallbackHost = "string"
-                };
+            //    UserCreateModel userCreateModel = new UserCreateModel
+            //    {
+            //        providerCallbackHost = "string"
+            //    };
 
-                var result = await MomoClass.createUser(UniqueRef, userCreateModel);
-                if(result)
-                    Preferences.Set("uuid", UniqueRef);
-            }
+            //    var result = await MomoClass.createUser(UniqueRef, userCreateModel);
+            //    if(result)
+            //        Preferences.Set("uuid", UniqueRef);
+            //}
 
-            string apikey = await MomoClass.CreateApiKey(UniqueRef);
-            if (!string.IsNullOrEmpty(apikey))
-                Preferences.Set("apikey", apikey);
+            //string apikey = await MomoClass.CreateApiKey(UniqueRef);
+            //if (!string.IsNullOrEmpty(apikey))
+            //    Preferences.Set("apikey", apikey);
         }
         catch (Exception ex)
         {
