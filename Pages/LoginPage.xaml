@@ -7,22 +7,22 @@
     <ContentPage.Content>
         <Grid
             HorizontalOptions="FillAndExpand"
-            VerticalOptions="FillAndExpand">
+            VerticalOptions="CenterAndExpand">
             <Grid.RowDefinitions>
-                <RowDefinition Height="250" />
+                <RowDefinition Height="Auto" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
             <StackLayout Grid.Row="0" VerticalOptions="Center">
                 <Label FontSize="28"
                        HorizontalOptions="Center"
                        TextColor="{DynamicResource Tertiary}"
-                       Text="MONEY TRANSFERT" />
+                       Text="Se connecter" />
                 <ActivityIndicator
                     HeightRequest="30"
                     IsRunning="{Binding IsBusy}"
                     IsVisible="{Binding IsBusy}"
                     WidthRequest="30"
-                    Color="{DynamicResource Red}" />
+                    Color="{DynamicResource LightPrimary}" />
             </StackLayout>
 
             <Grid Grid.Row="1"
@@ -36,19 +36,15 @@
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
-                <Label Grid.Row="0"
-                       HorizontalOptions="Start"
-                       Text="Accéder à mon compte !"
-                       TextColor="{DynamicResource Secondary}" />
 
-                <Entry Grid.Row="1"
+                <Entry Grid.Row="0"
                        ClearButtonVisibility="WhileEditing"
                        Keyboard="Telephone"
                        Placeholder="Téléphone"
                        ReturnType="Next"
                        Text="{Binding Telephone}" />
                 
-                <Entry Grid.Row="2"
+                <Entry Grid.Row="1"
                        IsPassword="True"
                        Placeholder="Mot de passe"
                        ReturnCommand="{Binding LoginCommand}"
@@ -56,13 +52,14 @@
                        ReturnType="Go"
                        Text="{Binding Password}" />
 
-                <Button Grid.Row="3"
-                        BackgroundColor="{DynamicResource Secondary}"
+                <Button Grid.Row="2"
+                        BackgroundColor="{DynamicResource LightPrimary}"
                         Command="{Binding LoginCommand}"
                         HorizontalOptions="Center"
                         TextTransform="Uppercase"
                         FontFamily="Regular"
-                        Text="Se connecter" />
+                        CornerRadius="0"
+                        Text="Connexion" />
                 
                 <Label Grid.Row="4"
                        FontFamily="Bold"
@@ -71,7 +68,7 @@
 
                 <StackLayout Grid.Row="5" Orientation="Horizontal"
                              HorizontalOptions="CenterAndExpand"
-                             VerticalOptions="EndAndExpand">
+                             VerticalOptions="End">
                     <Label Text="Je n'ai pas de compte ? "/>
                     
                     <Label Text=" S'inscrire" FontFamily="Bold">

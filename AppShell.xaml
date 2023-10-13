@@ -39,7 +39,7 @@
                 ContentTemplate="{DataTemplate pages:HomePage}"
                 Route="HomePage" />
         </Tab>
-        <!--<Tab Title="Envoyer">
+        <Tab Title="Envoyer">
             <Tab.Icon>
                 <FontImageSource
                     FontFamily="materialfont"
@@ -50,7 +50,7 @@
                 Title="Envoyer"
                 ContentTemplate="{DataTemplate pages:TransfertPage}"
                 Route="TransfertPage" />
-        </Tab>-->
+        </Tab>
         <Tab Title="Historique">
             <Tab.Icon>
                 <FontImageSource

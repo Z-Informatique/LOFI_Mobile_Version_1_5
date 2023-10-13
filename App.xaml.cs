@@ -8,7 +8,7 @@ public partial class App : Application
 	{
 		InitializeComponent();
 
-        if (string.IsNullOrEmpty(Helpers.Settings.Token))
+        if (string.IsNullOrEmpty(Helpers.Settings.User))
         {
             MainPage = new NavigationPage(new LoginPage());
         }

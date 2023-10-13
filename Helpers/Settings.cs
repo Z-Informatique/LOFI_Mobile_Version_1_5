@@ -25,35 +25,15 @@ namespace LOFI.Helpers
             get => AppSettings.GetValueOrDefault("Token", SettingsDefault);
             set => AppSettings.AddOrUpdateValue("Token", value);
         }
-        public static string IdUser
+        public static string User
         {
-            get => AppSettings.GetValueOrDefault("IdUser", SettingsDefault);
-            set => AppSettings.AddOrUpdateValue("IdUser", value);
+            get => AppSettings.GetValueOrDefault("User", SettingsDefault);
+            set => AppSettings.AddOrUpdateValue("User", value);
         }
         public static string Compte
         {
             get => AppSettings.GetValueOrDefault("Compte", SettingsDefault);
             set => AppSettings.AddOrUpdateValue("Compte", value);
-        }
-        public static string Nom
-        {
-            get => AppSettings.GetValueOrDefault("Nom", SettingsDefault);
-            set => AppSettings.AddOrUpdateValue("Nom", value);
-        }
-        public static string Prenom
-        {
-            get => AppSettings.GetValueOrDefault("Prenom", SettingsDefault);
-            set => AppSettings.AddOrUpdateValue("Prenom", value);
-        }
-        public static string Telephone
-        {
-            get => AppSettings.GetValueOrDefault("Telephone", SettingsDefault);
-            set => AppSettings.AddOrUpdateValue("Telephone", value);
-        }
-        public static string UserRole
-        {
-            get => AppSettings.GetValueOrDefault("UserRole", SettingsDefault);
-            set => AppSettings.AddOrUpdateValue("UserRole", value);
         }
         public static string GeneralSettings
         {

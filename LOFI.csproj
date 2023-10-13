@@ -37,10 +37,10 @@
 
 	<ItemGroup>
 		<!-- App Icon -->
-		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#00796B" />
+		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#FFC107" />
 
 		<!-- Splash Screen -->
-		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#00796B" BaseSize="128,128" />
+		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#FFC107" BaseSize="128,128" />
 
 		<!-- Images -->
 		<MauiImage Include="Resources\Images\*" />
@@ -67,11 +67,11 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <PackageReference Include="CommunityToolkit.Maui" Version="3.1.0" />
-	  <PackageReference Include="CommunityToolkit.Mvvm" Version="8.1.0-preview1" />
-	  <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
+	  <PackageReference Include="CommunityToolkit.Maui" Version="6.0.0" />
+	  <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.1" />
+	  <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
 	  <PackageReference Include="Xam.Plugins.Settings" Version="5.0.0-beta" />
-	  <PackageReference Include="ZXing.Net.Maui" Version="0.1.0-preview.7" />
+	  <PackageReference Include="ZXing.Net.Maui.CG" Version="1.0.2" />
 	</ItemGroup>
 
 	<ItemGroup>

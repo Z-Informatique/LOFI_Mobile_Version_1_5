@@ -59,7 +59,7 @@
                                             <Label Text="{Binding FullName}"
                                                    FontSize="12"
                                                    TextColor="{DynamicResource Gray900}" />
-                                            <Label Text="{Binding Telephone}"
+                                            <Label Text="{Binding User.TelUser}"
                                                    FontSize="11"
                                                    FontFamily="Regular"
                                                    TextColor="{DynamicResource Orange}" />

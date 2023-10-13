@@ -23,11 +23,8 @@ public partial class AppShell : Shell
         {
             Preferences.Clear();
             Settings.Token = string.Empty;
-            Settings.IdUser = string.Empty;
-            Settings.Nom = string.Empty;
-            Settings.Prenom = string.Empty;
-            Settings.Telephone = string.Empty;
-            Settings.UserRole = string.Empty;
+            Settings.User = string.Empty;
+            Settings.Compte = string.Empty;
             Application.Current.MainPage = new NavigationPage(new LoginPage());
         }
 

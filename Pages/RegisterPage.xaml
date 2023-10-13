@@ -11,7 +11,7 @@
                 HorizontalOptions="FillAndExpand"
                 VerticalOptions="FillAndExpand">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="150" />
+                    <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
                 <StackLayout
@@ -20,7 +20,7 @@
                     <Label FontSize="28"
                            HorizontalOptions="Center"
                            TextColor="{DynamicResource Tertiary}"
-                           Text="MONEY TRANSFERT" />
+                           Text="S'inscrire" />
                 </StackLayout>
 
                 <Grid Grid.Row="1"
@@ -38,13 +38,8 @@
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
-                    <Label Grid.Row="0"
-                           HorizontalOptions="Start"
-                           Text="Créer un compte"
-                           TextColor="{DynamicResource Secondary}" />
-                    <Picker Grid.Row="1"
+                    <Picker Grid.Row="0"
                             Title="Qui suis-je ?">
                         <Picker.Items>
                             <x:String>Individue</x:String>
@@ -52,7 +47,7 @@
                             <x:String>Association</x:String>
                         </Picker.Items>
                     </Picker>
-                    <Picker Grid.Row="2"
+                    <Picker Grid.Row="1"
                             Title="Choisir mon pays">
                         <Picker.Items>
                             <x:String>Cameroun</x:String>
@@ -60,28 +55,28 @@
                             <x:String>Gabon</x:String>
                         </Picker.Items>
                     </Picker>
-                    <Entry Grid.Row="3"
+                    <Entry Grid.Row="2"
                            Placeholder="Mon nom"
                            Text="{Binding Nom}" />
-                    <Entry Grid.Row="4"
+                    <Entry Grid.Row="3"
                            Placeholder="Mon prénom"
                            Text="{Binding Prenom}" />
-                    <Entry Grid.Row="5"
+                    <Entry Grid.Row="4"
                            Placeholder="Mon téléphone"
                            Text="{Binding Telephone}" />
-                    <Entry Grid.Row="6"
+                    <Entry Grid.Row="5"
                            Placeholder="Mon adresse Email"
                            Text="{Binding Email}" />
-                    <Entry Grid.Row="7"
+                    <Entry Grid.Row="6"
                            IsPassword="True"
                            Placeholder="Mot de passe"
                            Text="{Binding Password}" />
-                    <Entry Grid.Row="8"
+                    <Entry Grid.Row="7"
                            IsPassword="True"
                            Placeholder="Confirmer le mot de passe"
                            Text="{Binding ConfirmPassword}" />
 
-                    <StackLayout Grid.Row="9"
+                    <StackLayout Grid.Row="8"
                                  Spacing="1">
                         <Grid>
                             <Grid.ColumnDefinitions>
@@ -101,15 +96,16 @@
                                    LineBreakMode="WordWrap"/>
                         </Grid>
                     </StackLayout>
-                    <Button Grid.Row="10"
-                            BackgroundColor="{DynamicResource Secondary}"
+                    <Button Grid.Row="9"
+                            BackgroundColor="{DynamicResource LightPrimary}"
                             Command="{Binding RegisterCommand}"
                             FontFamily="Regular"
+                            CornerRadius="0"
                             TextTransform="Uppercase"
                             HorizontalOptions="Center"
-                            Text="S'inscrire"/>
+                            Text="Créer un compte"/>
 
-                    <StackLayout Grid.Row="11" Orientation="Horizontal" HorizontalOptions="CenterAndExpand"
+                    <StackLayout Grid.Row="10" Orientation="Horizontal" HorizontalOptions="CenterAndExpand"
                                  VerticalOptions="CenterAndExpand">
                         <Label Text="Vous avez déjà un compte ? " />
                         <Label Text="Se connecter" FontFamily="Bold">

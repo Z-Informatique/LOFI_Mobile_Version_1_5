@@ -15,6 +15,7 @@ public partial class HomeViewModel : ObservableObject
     private CompteService CompteService { get; set; } = new CompteService();
     private HistoriqueService historiqueService { get; set; } = new HistoriqueService();
     private readonly SerializeClass<Compte> serializeClass = new SerializeClass<Compte>();
+    private readonly SerializeClass<User> serializeUser = new SerializeClass<User>();
     private MomoClass MomoClass { get; set; } = new MomoClass();
     private readonly Guid newUId = Guid.NewGuid();
 
@@ -22,10 +23,10 @@ public partial class HomeViewModel : ObservableObject
     Compte compteUser;
 
     [ObservableProperty]
-    string fullName;
-    
+    User user;
+
     [ObservableProperty]
-    string telephone;
+    string fullName;
     
     [ObservableProperty]
     bool isBusy;
@@ -73,14 +74,17 @@ public partial class HomeViewModel : ObservableObject
     public HomeViewModel()
     {
         Historiques = new ObservableCollection<Historique>();
-        FullName = Settings.Nom + " " + Settings.Prenom;
-        Telephone = Settings.Telephone;
 
         //getUserCredentialApiKey();
+        getUserInfo();
         getCompte();
-        GetHistorique();
+        //GetHistorique();
     }
-
+    void getUserInfo()
+    {
+        User = serializeUser.Deserialize(Settings.User);
+        FullName = User.NomUser + " " + User.PrenomUser;
+    }
     //Cette fonction permet d'initialiser les credentials d'un utilisateur
     async void getUserCredentialApiKey()
     {
@@ -118,15 +122,14 @@ public partial class HomeViewModel : ObservableObject
         try
         {
             IsBusy = true;
-            if (Helpers.Settings.UserRole == "0")
+            if (Settings.Compte != string.Empty)
             {
-                CompteUser = await CompteService.CompteAsync(Convert.ToInt32(Settings.IdUser));
-                Settings.Compte = serializeClass.Serialize(CompteUser);
+                CompteUser = serializeClass.Deserialize(Settings.Compte);
             }
         }
         catch (Exception ex)
         {
-            await Shell.Current.DisplayAlert("Compte !", "Une erreur s'est produite. " + ex.Message, "OK");
+            await Shell.Current.DisplayAlert("Erreur", "Une erreur s'est produite. " + ex.Message, "OK");
         }
         finally
         {
@@ -162,12 +165,10 @@ public partial class HomeViewModel : ObservableObject
             {
                 Historiques.Add(history);
             }
-
-
         }
         catch (Exception ex)
         {
-            await Shell.Current.DisplayAlert("Alerte !", $"Erreur de chargement des données..{ex.Message}", "REESSAYER");
+            await Shell.Current.DisplayAlert("Erreur", $"Erreur de chargement des données..{ex.Message}", "REESSAYER");
         }
         finally
         {

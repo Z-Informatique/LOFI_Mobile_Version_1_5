@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using LOFI.Data;
+using LOFI.Helpers;
 using LOFI.Models;
 using LOFI.Pages;
 using System.Windows.Input;
@@ -10,7 +11,6 @@ namespace LOFI.ViewModels;
 public partial class UserViewModel : ObservableObject
 {
     private UserService userService { get; set; } = new UserService();
-
     public User User { get; set; } = new User();
 
     [ObservableProperty]
@@ -43,29 +43,29 @@ public partial class UserViewModel : ObservableObject
         {
             if (string.IsNullOrEmpty(Telephone))
             {
-                await Application.Current.MainPage.DisplayAlert("Alerte !", "Le champ téléphone est vide.", "OK");
+                await Application.Current.MainPage.DisplayAlert("Erreur", "Le champ téléphone est vide.", "OK");
                 return;
             }
             if (string.IsNullOrEmpty(Password))
             {
-                await Application.Current.MainPage.DisplayAlert("Alerte !", "Le champ mot de passe est vide.", "OK");
+                await Application.Current.MainPage.DisplayAlert("Erreur", "Le champ mot de passe est vide.", "OK");
                 return;
             }
             IsBusy = true;
             User user = await userService.Login(Telephone, Password);
 
-            if (user != null && !string.IsNullOrEmpty(user.TelUser))
+            if (user != null)
             {
                 Application.Current.MainPage = new AppShell();
             }
             else
             {
-                await Application.Current.MainPage.DisplayAlert("Alerte !", "Téléphone ou mot de passe incorrect.", "OK");
+                await Application.Current.MainPage.DisplayAlert("Erreur", "Téléphone ou mot de passe incorrect.", "OK");
             }
         }
         catch (Exception ex)
         {
-            await Application.Current.MainPage.DisplayAlert("Alerte !", $"Impossible de contacter le serveur. {ex.Message}", "OK");
+            await Application.Current.MainPage.DisplayAlert("Erreur", $"Impossible de contacter le serveur. {ex.Message}", "OK");
         }
         finally
         {
@@ -75,7 +75,7 @@ public partial class UserViewModel : ObservableObject
 
     private async Task RegisterCommandAsync()
     {
-        await Application.Current.MainPage.DisplayAlert("Inscription !", "Succès.", "OK");
+        await Application.Current.MainPage.DisplayAlert("Succès", "Succès.", "OK");
     }
 
 }
